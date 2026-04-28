@@ -377,11 +377,7 @@ progress {
   min-height: 100dvh;
   display: grid;
   place-items: center;
-  background-image: url("../../images/bg-top.JPG");
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  position: relative;
+  background-color: #e8f3f8;
 }
 
 .bg-overlay {
@@ -430,9 +426,6 @@ progress {
   cursor: pointer;
   display: block;
   border-radius: 3px;
-  box-shadow: 0 4px 24px rgba(139, 184, 204, 0.36), 0 2px 8px rgba(184, 48, 32, 0.12);
-  animation: letterAppear 0.9s var(--ease-out) 0.1s both;
-  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out), box-shadow var(--dur-base) ease;
 }
 .letter-card:hover {
   transform: translateY(-8px) scale(1.03);
