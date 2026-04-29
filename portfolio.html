@@ -79,7 +79,7 @@
       </nav>
 
       <footer class="tl-paper-footer">
-        <a class="tl-back-letter" href="index.html" aria-label="手紙トップへ戻る">← Letter</a>
+        <a class="tl-back-letter" href="index.html" aria-label="手紙トップへ戻る">TOPページへ</a>
         <span class="tl-sender">✦ &nbsp;Sasaki Uta &nbsp;·&nbsp; 2026</span>
       </footer>
 
@@ -98,7 +98,7 @@
     <div class="detail-wrap">
 
       <button class="detail-back" data-target="menu" aria-label="目次へ戻る">
-        <span aria-hidden="true">←</span> 目次へ
+        目次へ
       </button>
 
       <header class="detail-header js-reveal">
@@ -149,7 +149,7 @@
   </div><!-- /#view-about -->
 
 
-  <!-- ==================================================
+<!-- ==================================================
        VIEW: Works
        ================================================== -->
   <div class="view view--detail view--dark" id="view-works" data-view="works" hidden aria-labelledby="works-title">
@@ -157,7 +157,7 @@
     <div class="detail-wrap">
 
       <button class="detail-back" data-target="menu" aria-label="目次へ戻る">
-        <span aria-hidden="true">←</span> 目次へ
+        目次へ
       </button>
 
       <header class="detail-header js-reveal">
@@ -165,52 +165,161 @@
         <h2 class="section-title" id="works-title">Works</h2>
       </header>
 
-      <div class="works-list">
-        <article class="work-card js-reveal" aria-labelledby="work1-title">
-          <div class="work-card-header">
-            <span class="work-type">Web</span>
-          </div>
-          <h3 class="work-title" id="work1-title">架空のクッキー専門店のwebサイト</h3>
-          <p class="work-context">
-            授業で最初に作成したサイトです。<br>
-            Figmaでワイヤーフレーム、デザインカンプを作成したのちに、HTMLとCSSでコーディングしました。<br>
-            高級感のある余白を保つため、商品紹介のレイアウトをデスクトップ版では3列、スマホ版では2列に収めるようグリッドレイアウトで制御しています。
-          </p>
-          <p class="tech-stack">HTML / CSS</p>
-          <div class="link-to-page"><a href="https://lets5steady.github.io/ButterCollectionwebpage">詳細を見る</a></div>
-        </article>
+      <!--
+        設計メモ
+        ─────────────────────────────────────────────────────────
+        左列（#worksFeature）と右列（#worksList）を最初から別コンテナにする。
+        これにより左列の高さが右列の行高さに影響しない。
 
-        <article class="work-card js-reveal" aria-labelledby="work2-title">
-          <div class="work-card-header">
-            <span class="work-type">App</span>
-          </div>
-          <h3 class="work-title" id="work2-title">ハングル学習アプリ</h3>
-          <p class="work-context">
-            自主的に制作した韓国語学習のためのクイズアプリです。<br>
-            特技である韓国語を活かしたいと考え、「韓国語に初めて触れる方がハングルを読めるようになること」を目標に開発しました。<br>
-            コードはすべて生成AIを用いて実装しています。<br>
-            AIを活用しながらも一貫した設計思想を持ち、少しずつ修正を重ね、機能を追加していきました。LocalStorageを活用し、ブラウザを閉じてもデータが残る仕様です。
-          </p>
-          <p class="tech-stack">HTML / CSS / JavaScript</p>
-          <div class="link-to-page"><a href="https://lets5steady.github.io/hangeul-quiz/">詳細を見る</a></div>
-        </article>
+        JS は選択されたカードを #worksList → #worksFeature に移動させる。
+        移動は replaceChildren / removeChild を使いノードを破棄しない。
 
-        <article class="work-card js-reveal" aria-labelledby="work3-title">
-          <div class="work-card-header">
-            <span class="work-type">Web</span>
-          </div>
-          <h3 class="work-title" id="work3-title">架空の高級美顔器のLP</h3>
-          <p class="work-context">
-            二度目に授業で作成したサイトです。<br>
-            前回とは異なり、Figmaでバリアブルやコンポーネントも活用しながら、ペルソナやカスタマージャーニーマップから作成しました。<br>
-            サイトの構成上、複数のHTMLが必要であったため、SCSSのmixin機能を有効活用し簡潔でわかりやすいコードを目指しました。
-          </p>
-          <p class="tech-stack">HTML / CSS / JavaScript</p>
-          <div class="link-to-page"><a href="https://lets5steady.github.io/dermavance.lp/">詳細を見る</a></div>
-        </article>
+        画像 .work-images は CSS で
+          右列（通常時）→ display: none
+          左列に移動後  → display: flex
+        に切り替える。
+        ─────────────────────────────────────────────────────────
+      -->
+      <div class="works-stage js-reveal">
 
-      </div>
-    </div>
+        <!-- 左列：選択中カードが JS によって移動してくる -->
+        <div class="works-feature" id="worksFeature"
+             aria-live="polite" aria-label="選択中の制作物"></div>
+
+        <!-- 右列：非選択カードの並ぶリスト -->
+        <ol class="works-list" id="worksList" aria-label="制作物一覧">
+
+          <!-- ── 制作物 1 ── -->
+          <li class="work-item" data-work-id="1">
+            <article class="work-card" aria-labelledby="work1-title">
+
+              <!-- テキスト（常に表示） -->
+              <div class="work-body">
+                <div class="work-meta">
+                  <span class="work-type">Web</span>
+                  <span class="work-stack">HTML / CSS</span>
+                </div>
+                <h3 class="work-title" id="work1-title">架空のクッキー専門店のwebサイト</h3>
+                <p class="work-desc">
+                  授業で最初に作成したサイトです。<br>
+                  Figmaでワイヤーフレーム、デザインカンプを作成したのちに、HTMLとCSSでコーディングしました。<br>
+                  高級感のある余白を保つため、商品紹介のレイアウトをデスクトップ版では3列、スマホ版では2列に収めるようグリッドレイアウトで制御しています。
+                </p>
+                <a class="work-link"
+                   href="https://lets5steady.github.io/ButterCollectionwebpage"
+                   target="_blank" rel="noopener noreferrer">
+                  - "Butter Collection"のこだわりクッキー -
+                </a>
+              </div>
+
+              <!-- 画像（左列表示時のみ CSS で表示） -->
+              <div class="work-images" aria-hidden="true">
+                <figure class="work-figure work-figure--pc">
+                  <img src="images/works/cookie-pc.png"
+                       alt="架空のクッキー専門店 デスクトップ版スクリーンショット"
+                       loading="lazy">
+                  <figcaption>Desktop</figcaption>
+                </figure>
+                <figure class="work-figure work-figure--sp">
+                  <img src="images/works/cookie-sp.png"
+                       alt="架空のクッキー専門店 スマートフォン版スクリーンショット"
+                       loading="lazy">
+                  <figcaption>Mobile</figcaption>
+                </figure>
+              </div>
+
+            </article>
+          </li>
+
+          <!-- ── 制作物 2 ── -->
+          <li class="work-item" data-work-id="2">
+            <article class="work-card" aria-labelledby="work2-title">
+
+              <!-- テキスト（常に表示） -->
+              <div class="work-body">
+                <div class="work-meta">
+                  <span class="work-type">App</span>
+                  <span class="work-stack">HTML / CSS / JavaScript</span>
+                </div>
+                <h3 class="work-title" id="work2-title">ハングル学習アプリ</h3>
+                <p class="work-desc">
+                  自主的に制作した韓国語学習のためのクイズアプリです。<br>
+                  特技である韓国語を活かしたいと考え、「韓国語に初めて触れる方がハングルを読めるようになること」を目標に開発しました。<br>
+                  コードはすべて生成AIを用いて実装しています。<br>
+                  AIを活用しながらも一貫した設計思想を持ち、少しずつ修正を重ね、機能を追加していきました。LocalStorageを活用し、ブラウザを閉じてもデータが残る仕様です。
+                </p>
+                <a class="work-link"
+                   href="https://lets5steady.github.io/hangeul-quiz/"
+                   target="_blank" rel="noopener noreferrer">
+                  - 韓国語クイズに挑戦 -
+                </a>
+              </div>
+
+              <!-- 画像（左列表示時のみ CSS で表示） -->
+              <div class="work-images" aria-hidden="true">
+                <figure class="work-figure work-figure--pc">
+                  <img src="images/works/hangeul-pc.png"
+                       alt="ハングル学習アプリ デスクトップ版スクリーンショット"
+                       loading="lazy">
+                  <figcaption>Desktop</figcaption>
+                </figure>
+                <figure class="work-figure work-figure--sp">
+                  <img src="images/works/hangeul-sp.png"
+                       alt="ハングル学習アプリ スマートフォン版スクリーンショット"
+                       loading="lazy">
+                  <figcaption>Mobile</figcaption>
+                </figure>
+              </div>
+
+            </article>
+          </li>
+
+          <!-- ── 制作物 3 ── -->
+          <li class="work-item" data-work-id="3">
+            <article class="work-card" aria-labelledby="work3-title">
+
+              <!-- テキスト（常に表示） -->
+              <div class="work-body">
+                <div class="work-meta">
+                  <span class="work-type">Web</span>
+                  <span class="work-stack">HTML / CSS / JavaScript</span>
+                </div>
+                <h3 class="work-title" id="work3-title">架空の高級美顔器のLP</h3>
+                <p class="work-desc">
+                  二度目に授業で作成したサイトです。<br>
+                  前回とは異なり、Figmaでバリアブルやコンポーネントも活用しながら、ペルソナやカスタマージャーニーマップから作成しました。<br>
+                  サイトの構成上、複数のHTMLが必要であったため、SCSSのmixin機能を有効活用し簡潔でわかりやすいコードを目指しました。
+                </p>
+                <a class="work-link"
+                   href="https://lets5steady.github.io/dermavance.lp/"
+                   target="_blank" rel="noopener noreferrer">
+                  - 50万円の美顔器の性能とは -
+                </a>
+              </div>
+
+              <!-- 画像（左列表示時のみ CSS で表示） -->
+              <div class="work-images" aria-hidden="true">
+                <figure class="work-figure work-figure--pc">
+                  <img src="images/works/dermavance-pc.png"
+                       alt="架空の高級美顔器のLP デスクトップ版スクリーンショット"
+                       loading="lazy">
+                  <figcaption>Desktop</figcaption>
+                </figure>
+                <figure class="work-figure work-figure--sp">
+                  <img src="images/works/dermavance-sp.png"
+                       alt="架空の高級美顔器のLP スマートフォン版スクリーンショット"
+                       loading="lazy">
+                  <figcaption>Mobile</figcaption>
+                </figure>
+              </div>
+
+            </article>
+          </li>
+
+        </ol><!-- /.works-list -->
+      </div><!-- /.works-stage -->
+
+    </div><!-- /.detail-wrap -->
   </div><!-- /#view-works -->
 
 
@@ -222,7 +331,7 @@
     <div class="detail-wrap">
 
       <button class="detail-back" data-target="menu" aria-label="目次へ戻る">
-        <span aria-hidden="true">←</span> 目次へ
+        目次へ
       </button>
 
       <header class="detail-header js-reveal">
@@ -301,7 +410,7 @@
     <div class="detail-wrap">
 
       <button class="detail-back" data-target="menu" aria-label="目次へ戻る">
-        <span aria-hidden="true">←</span> 目次へ
+        目次へ
       </button>
 
       <header class="detail-header js-reveal">

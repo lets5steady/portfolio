@@ -8,9 +8,13 @@
 
 import { initLetterTop } from './letter.js';
 import { initRouter }    from './router.js';
+import { initWorks } from './works.js';
 
 /* index.html：手紙クリックアニメーション */
 initLetterTop();
 
 /* portfolio.html：SPA ビュールーター */
 initRouter();
+
+/* portfolio.html：<template id="works-data">  */
+initWorks();

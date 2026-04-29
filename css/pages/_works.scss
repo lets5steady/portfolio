@@ -1,0 +1,271 @@
+@use "../global/variables" as *;
+@use "../global/mixins"   as *;
+
+// =============================================================================
+//  _works.scss  —  pages/
+//  Works ビュー
+//
+//  レイアウト構造
+//  ─────────────────────────────────────────────────────────────────────────────
+//  .works-stage     flex コンテナ（左右を完全に独立させる）
+//    .works-feature 左列：選択中カード1件。sticky でスクロール追従
+//    .works-list    右列：非選択カードのリスト。各行高さは右列のみで決まる
+//
+//  JS は選択されたカードの <li> を #worksList → #worksFeature へ移動する。
+//  ノードを破棄しないので参照・イベントは保持される。
+//
+//  画像 .work-images
+//    右列（#worksList 内）→ display: none
+//    左列（#worksFeature 内）→ display: flex
+// =============================================================================
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  ステージ：左右を flex で独立させる
+// ─────────────────────────────────────────────────────────────────────────────
+.works-stage {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;   // 左右それぞれ独立した高さで並ぶ
+}
+
+// 左列
+.works-feature {
+  flex: 1;
+  position: sticky;
+  top: 2.5rem;
+  min-height: 2rem;          // 初期化前の空状態でも幅を確保
+}
+
+// 右列
+.works-list {
+  flex: 1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  // カード間を border-bottom のみで区切る（gap なし）
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  右列：カード（非選択時）
+// ─────────────────────────────────────────────────────────────────────────────
+.work-item {
+  position: relative;
+}
+
+// 右列カード
+.works-list .work-card {
+  background-color: $linen-pure;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: background-color var(--dur-base) ease;
+
+  &:hover {
+    background-color: rgba($ice-blue, 0.08);
+  }
+}
+
+// 右列カード間の間隔は .works-list の gap で制御（border-top 不要）
+
+// 右列の先頭と末尾に角丸・カード間に gap
+.works-list {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px $ice-blue-soft;
+  gap: var(--space-xs);              // カード間の隙間
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  左列：カード（選択時）
+// ─────────────────────────────────────────────────────────────────────────────
+.works-feature .work-card {
+  background-color: $linen-pure;
+  display: flex;
+  flex-direction: column;            // HTML順のまま：テキスト→画像
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+    0 2px 0 $ice-blue-soft,
+    0 8px 32px rgba($ice-blue, 0.14);
+
+  // テキストと画像の間隔
+  .work-body {
+    padding-bottom: var(--space-lg);
+  }
+
+  // 入場アニメーション
+  &.is-entering {
+    animation: workFadeIn 0.28s var(--ease-out) both;
+  }
+}
+
+@keyframes workFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  画像エリア
+//  右列では非表示、左列（.works-feature）に移動したときのみ表示
+// ─────────────────────────────────────────────────────────────────────────────
+.work-images {
+  // 右列では非表示
+  .works-list & { display: none; }
+
+  // 左列では表示
+  .works-feature & {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-sm);
+    background-color: $ice-blue-pale;
+    padding: 0;
+  }
+}
+
+.work-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+
+  img {
+    display: block;
+    border-radius: 0 0 4px 4px;   // カード下端に画像が来るので下側を丸める
+    object-fit: cover;
+    object-position: top;
+    background-color: $linen-soft;
+  }
+
+  figcaption {
+    @include label-text(0.6rem, $text-muted);
+    padding-bottom: var(--space-xs);
+  }
+}
+
+// デスクトップ版：縦長スクリーンショット
+.work-figure--pc {
+  flex: 1;
+  min-width: 0;
+
+  img {
+    width: 100%;
+    height: 420px;
+  }
+}
+
+// スマートフォン版
+.work-figure--sp {
+  width: 100px;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 420px;
+  }
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  テキストボディ（左右共通・常に表示）
+// ─────────────────────────────────────────────────────────────────────────────
+.work-body {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+
+  // 右列では余白を詰める
+  .works-list & {
+    padding: 0.85rem var(--space-md);
+  }
+}
+
+.work-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.work-stack {
+  @include label-text(0.68rem, $text-muted);
+}
+
+.work-title {
+  @include display-text(clamp(1.05rem, 2vw, 1.45rem), $text-main);
+  line-height: 1.3;
+}
+
+.work-desc {
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: $text-sub;
+}
+
+.work-link {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  @include label-text(0.72rem, $crimson);
+  margin-top: var(--space-xs);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  // クリック範囲を広げる
+  padding: 0.75em 1em;
+  margin-left: -1em;              // padding 分だけ左にずらして位置を揃える
+  border-radius: 3px;
+  transition:
+    color            var(--dur-base) ease,
+    gap              var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) ease,
+    border-color     var(--dur-base) ease;
+
+  &:hover {
+    background-color: $gold-pale;
+    color: $ice-blue-mid;
+    gap: 0.7rem;
+  }
+
+  @include focus-ring($crimson);
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  レスポンシブ
+// ─────────────────────────────────────────────────────────────────────────────
+
+// タブレット以下：左右 → 上下
+@media (max-width: 768px) {
+  .works-stage {
+    flex-direction: column;
+  }
+
+  .works-feature {
+    position: static;
+    width: 100%;
+  }
+
+  .works-list {
+    width: 100%;
+  }
+
+  .work-figure--pc img,
+  .work-figure--sp img {
+    height: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-body {
+    padding: var(--space-sm);
+  }
+
+  .work-figure--sp {
+    width: 70px;
+  }
+}
