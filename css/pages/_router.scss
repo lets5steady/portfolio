@@ -1,0 +1,98 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+// =============================================================================
+//  _router.scss
+//  SPA ビュールーター — ビュー切り替えアニメーション
+//
+//  状態クラス（JS が付与）:
+//    .is-leaving / .is-leaving--left / .is-leaving--right  — 退場
+//    .is-entering--left / .is-entering--right              — 入場待機
+// =============================================================================
+
+.view {
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    opacity   0.35s ease;
+}
+
+// メニュービュー：薄い水色
+#view-menu {
+  display: grid;
+  place-items: center;
+  background-color: $ice-blue-pale;
+  padding: 2rem 1.5rem;
+}
+
+// About / Skills：ほぼ白
+.view--detail {
+  background-color: $linen-warm;
+  color: $text-main;
+}
+
+// Works：薄い水色
+.view--dark {
+  background-color: $ice-blue-pale;
+  color: $text-main;
+  .detail-header { border-bottom-color: $ice-blue-soft; }
+}
+
+// Vision：薄いリネン
+.view--ink {
+  background-color: $linen;
+  color: $text-main;
+  .detail-header { border-bottom-color: $linen-soft; }
+}
+
+// ── 退場 ──────────────────────────────────────────────────
+.is-leaving           { pointer-events: none; }
+.is-leaving--left     { transform: translateX(-6%) scale(0.97); opacity: 0; }
+.is-leaving--right    { transform: translateX( 6%) scale(0.97); opacity: 0; }
+
+// ── 入場待機（transition を無効にして瞬間移動）────────────
+.is-entering--right   { transform: translateX( 5%) scale(0.98); opacity: 0; transition: none !important; }
+.is-entering--left    { transform: translateX(-5%) scale(0.98); opacity: 0; transition: none !important; }
+
+
+// ── 詳細ビュー レイアウト ──────────────────────────────────
+.detail-wrap {
+  @include section-container;
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
+}
+
+.detail-header {
+  @include section-header-line;
+  margin-top: 1rem;
+}
+
+// ── 戻るボタン ─────────────────────────────────────────────
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  @include label-text(0.75rem, $ice-blue-mid);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+  @include focus-ring($crimson);
+  transition:
+    color     var(--dur-base) ease,
+    transform var(--dur-base) var(--ease-out);
+
+  // ホバーは赤アクセント
+  &:hover { color: $crimson-mid; transform: translateX(-4px); }
+}
+
+
+// ── prefers-reduced-motion ────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  .view { transition: none !important; }
+  .is-entering--right,
+  .is-entering--left { transform: none !important; opacity: 1 !important; }
+}

@@ -1,0 +1,89 @@
+// =============================================================================
+//  _mixins.scss
+//  再利用可能な Mixin 定義
+// =============================================================================
+
+@use "variables" as *;
+
+// ── ラベル（モノスペース・大文字・字間）
+@mixin label-text($size: 0.75rem, $color: $crimson) {
+  font-family: var(--font-mono);
+  font-size: $size;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color;
+}
+
+// ── Serif 大見出し
+@mixin display-text($size: 2rem, $color: $text-main) {
+  font-family: var(--font-display);
+  font-size: $size;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: $color;
+}
+
+// ── フォーカスリング（アクセシビリティ）
+@mixin focus-ring($color: $crimson) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 4px;
+    border-radius: 3px;
+  }
+}
+
+// ── ピルバッジ（丸型ラベル）
+@mixin pill-badge($color: $ice-blue, $bg: rgba($ice-blue, 0.10)) {
+  @include label-text(0.68rem, $color);
+  border: 1px solid $color;
+  background: $bg;
+  padding: 0.2em 0.72em;
+  border-radius: 100px;
+}
+
+// ── セクション内コンテナ（中央揃え・最大幅）
+@mixin section-container($max: 1100px) {
+  max-width: $max;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+// ── 下線スライドホバー
+@mixin underline-hover($color: $crimson) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0; right: 0;
+    height: 1px;
+    background: $color;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+  &:hover::after { transform: scaleX(1); }
+}
+
+// ── セクションヘッダー境界線
+@mixin section-header-line($color: $ice-blue-soft) {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid $color;
+}
+
+// ── フェードインアップ適用
+@mixin fade-in-up($delay: 0s) {
+  animation: fadeInUp var(--dur-slow) var(--ease-out) $delay both;
+}
+
+// ── 明るい影（暗くない柔らかいシャドウ）
+@mixin soft-shadow($strength: 1) {
+  box-shadow:
+    0 #{2px * $strength} #{12px * $strength} rgba($ice-blue, 0.18 * $strength),
+    0 #{1px * $strength} #{4px  * $strength} rgba($crimson,  0.06 * $strength);
+}

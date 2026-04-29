@@ -1,0 +1,298 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+// =============================================================================
+//  _sections.scss
+//  共通セクション・About・Works・Skills・Vision・フッター・レスポンシブ
+// =============================================================================
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  共通セクション
+// ─────────────────────────────────────────────────────────────────────────────
+.section {
+  padding: var(--space-xl) 0;
+  background-color: $linen-warm;   // About / Skills：ほぼ白
+  color: $text-main;
+
+  &--dark {
+    background-color: $ice-blue-pale;   // Works：薄い水色
+    color: $text-main;
+    .section-header { border-bottom-color: $ice-blue-soft; }
+  }
+
+  &--vision {
+    background-color: $linen;   // Vision：薄いリネン
+    color: $text-main;
+    .section-header { border-bottom-color: $linen-soft; }
+  }
+}
+
+.section-inner  { @include section-container; }
+.section-header { @include section-header-line; }
+.section-index  { @include label-text(0.72rem, $crimson); }
+.section-title  { @include display-text(clamp(2rem, 5vw, 3.5rem), $text-main); }
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  About
+// ─────────────────────────────────────────────────────────────────────────────
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.about-name {
+  @include display-text(1.75rem, $text-main);
+  margin-bottom: var(--space-xs);
+}
+
+.about-role {
+  @include label-text(0.75rem, $crimson);
+  margin-bottom: var(--space-md);
+}
+
+.about-text {
+  font-size: 0.93rem;
+  line-height: 1.9;
+  color: $text-sub;
+  margin-bottom: var(--space-sm);
+}
+
+.meta-list { display: flex; flex-direction: column; }
+
+.meta-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: var(--space-sm);
+  padding: 0.85rem 0;
+  border-bottom: 1px solid $gold-pale;   // ゴールド系（小物アクセント）
+  font-size: 0.85rem;
+  &:first-child { border-top: 1px solid $gold-pale; }
+}
+
+.meta-label {
+  @include label-text(0.72rem, $text-muted);
+  padding-top: 0.1em;
+}
+
+.meta-value { color: $text-main; line-height: 1.6; }
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  Works
+// ─────────────────────────────────────────────────────────────────────────────
+.works-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background-color: $ice-blue-soft;   // カード間の区切り
+}
+
+.work-card {
+  background-color: $linen-pure;
+  padding: var(--space-lg) var(--space-md);
+  transition: transform var(--dur-base) var(--ease-out);
+  position: relative;
+
+  &:hover {
+    transform: scale(1.005);
+    z-index: 1;
+  }
+}
+
+.work-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+// バッジは水色（ベースカラー）
+.work-type  { @include pill-badge($ice-blue-mid, rgba($ice-blue, 0.08)); }
+.work-year  { @include label-text(0.75rem, $text-muted); text-transform: none; }
+
+.work-title {
+  @include display-text(clamp(1.3rem, 3vw, 1.9rem), $text-main);
+  margin-bottom: var(--space-sm);
+}
+
+.work-context {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: $text-sub;
+  margin-bottom: var(--space-sm);
+  padding: var(--space-sm);
+  border-left: 2px solid $crimson-soft;   // 赤アクセント
+  background: $crimson-pale;
+  strong { color: $text-main; font-weight: 500; }
+}
+
+.work-points {
+    font-size: 0.83rem;
+    color: $text-sub;
+    padding-left: 1.2em;
+    position: relative;
+    line-height: 1.7;
+    // ダッシュは水色
+    &::before { content: '—'; position: absolute; left: 0; color: $ice-blue-mid; }
+  }
+
+.work-card a{
+  @include label-text;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  Skills
+// ─────────────────────────────────────────────────────────────────────────────
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg) var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.skill-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-xs);
+}
+
+.skill-name {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  color: $text-main;
+}
+
+// 学習中バッジ
+.skill-badge--learning {
+  @include label-text(0.62rem, $crimson);
+  border: 1px solid $crimson-soft;
+  background: $crimson-pale;
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+  animation: learningPulse 2.4s ease-in-out infinite;
+}
+
+// 学習中アイテム全体を少し軽く
+.skill-item--learning { opacity: 0.85; }
+
+.skill-note { font-size: 0.75rem; color: $text-muted; line-height: 1.6; }
+
+.github-cta {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-md);
+  border-top: 1px solid $gold-pale;   // ゴールド系（小物アクセント）
+}
+
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  @include label-text(0.8rem, $text-main);
+  border: 1px solid $gold;   // ゴールドボーダー（小物）
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  @include focus-ring($crimson);
+  transition:
+    transform        var(--dur-base) var(--ease-out),
+    border-color     var(--dur-base) ease,
+    color            var(--dur-base) ease,
+    background-color var(--dur-base) ease;
+
+  &:hover {
+    transform: scale(1.03);
+    background-color: $gold-pale;
+    border-color: $gold-mid;
+    color: $gold-mid;
+  }
+
+  .btn-arrow { transition: transform var(--dur-base) var(--ease-out); }
+  &:hover .btn-arrow { transform: translateX(4px); }
+}
+
+.github-icon { flex-shrink: 0; }
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  Vision
+// ─────────────────────────────────────────────────────────────────────────────
+.vision-content { max-width: 700px; }
+
+.vision-quote {
+  @include display-text(clamp(1.1rem, 2.5vw, 1.5rem), $crimson);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  border-left: 2px solid $crimson-soft;
+  background: $crimson-pale;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 4px 4px 0;
+}
+
+.vision-text {
+  font-size: 0.95rem;
+  line-height: 2;
+  color: $text-sub;
+  margin-bottom: var(--space-md);
+  &:last-child { margin-bottom: 0; }
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  フッター
+// ─────────────────────────────────────────────────────────────────────────────
+.site-footer {
+  background-color: $ice-blue;   // 水色ベースの明るいフッター
+  color: $linen-pure;
+  border-top: 1px solid $ice-blue-mid;
+  padding: var(--space-md) 0;
+}
+
+.footer-inner {
+  @include section-container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy,
+.footer-made {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba($linen-pure, 0.75);
+  letter-spacing: 0.08em;
+}
+
+.footer-back {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: rgba($linen-pure, 0.75);
+  transition: color var(--dur-base) ease;
+  &:hover { color: $linen-pure; }
+  @include focus-ring($linen);
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  レスポンシブ
+// ─────────────────────────────────────────────────────────────────────────────
+@media (max-width: 768px) {
+  :root { --space-xl: 4.5rem; --space-lg: 2.5rem; }
+  .global-nav   { display: none; }
+  .about-grid   { grid-template-columns: 1fr; gap: var(--space-md); }
+  .skills-grid  { grid-template-columns: 1fr; gap: var(--space-md); }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+  .work-card    { padding: var(--space-md) var(--space-sm); }
+}
+
+@media (max-width: 480px) {
+  .hero-sub br { display: none; }
+  .meta-item   { grid-template-columns: 70px 1fr; }
+}

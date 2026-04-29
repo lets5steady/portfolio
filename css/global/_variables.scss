@@ -1,0 +1,91 @@
+// =============================================================================
+//  _variables.scss
+//  カラーパレット・CSS カスタムプロパティ・デザイントークン
+//
+//  カラー方針：
+//    ベース   : $ice-blue  #8bb8cc（水色）
+//    アクセント: $crimson   #b83020（赤）
+//    メイン   : $linen     #f5f0eb（白）
+//    ホバー   : 上記3色の明度・透明度変化のみ
+//    小物のみ : $gold      #c9a96e（黄金茶系）
+//    暗い色・濃い色は大画面には一切使わない
+// =============================================================================
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  コアカラー（ブランド3色）
+// ─────────────────────────────────────────────────────────────────────────────
+$ice-blue : #8bb8cc;   // ベース：水色
+$crimson  : #b83020;   // アクセント：赤
+$linen    : #f5f0eb;   // メイン：白
+
+// ── ベース水色の明度バリエーション
+$ice-blue-pale : #e8f3f8;   // 最も薄い（ページ背景）
+$ice-blue-soft : #c8dfe9;   // 薄め（ホバー背景・ボーダー）
+$ice-blue-mid  : #6aa0b8;   // やや濃い（ホバー色・アクティブ）
+
+// ── アクセント赤の明度バリエーション
+$crimson-pale  : #f5e8e6;   // 最も薄い（ホバー背景）
+$crimson-soft  : #e8c5c0;   // 薄め（ボーダー・下線）
+$crimson-mid   : #d04030;   // 明るめ（ホバー時の赤）
+
+// ── メインカラー白の明度バリエーション
+$linen-pure    : #ffffff;   // 純白（カード）
+$linen-warm    : #fdf9f5;   // ほぼ白（セクション背景）
+$linen-soft    : #f0e8e0;   // 薄いクリーム（ボーダー）
+
+// ── テキスト（明るいサイトに合う中明度の色味）
+$text-main     : #4a3828;              // メインテキスト（明るい茶系）
+$text-sub      : #7a6258;              // サブテキスト
+$text-muted    : rgba(74, 56, 40, 0.45);  // ミュート
+$text-on-blue  : #2e5c70;             // 水色背景上のテキスト
+
+// ── 小物アクセント（黄金茶系 — ボタン・ボーダーなど限定）
+$gold          : #c9a96e;   // ゴールド
+$gold-pale     : #f0e4cc;   // 薄いゴールド（背景）
+$gold-mid      : #b8904a;   // やや濃いゴールド（ホバー）
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  CSS カスタムプロパティ（JS 参照用）
+// ─────────────────────────────────────────────────────────────────────────────
+:root {
+  // ブランドカラー
+  --clr-base       : #{$ice-blue};
+  --clr-accent     : #{$crimson};
+  --clr-main       : #{$linen};
+  --clr-gold       : #{$gold};
+
+  // 背景（すべて明るい）
+  --clr-bg-page    : #{$ice-blue-pale};   // ページ全体
+  --clr-bg-section : #{$linen-warm};      // セクション
+  --clr-bg-card    : #{$linen-pure};      // カード
+  --clr-bg-blue    : #{$ice-blue};        // 水色ビュー
+
+  // テキスト
+  --clr-text       : #{$text-main};
+  --clr-text-sub   : #{$text-sub};
+  --clr-text-muted : #{$text-muted};
+
+  // ボーダー
+  --clr-border     : #{$ice-blue-soft};   // 水色系ボーダー
+  --clr-border-warm: #{$linen-soft};      // 暖色系ボーダー
+
+  // フォント
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-mono   : 'DM Mono', 'Courier New', monospace;
+  --font-body   : 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+
+  // スペーシング
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7rem;
+
+  // イージング・デュレーション
+  --ease-out   : cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-base   : 0.4s;
+  --dur-slow   : 0.7s;
+}

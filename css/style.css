@@ -380,18 +380,6 @@ progress {
   background-color: #e8f3f8;
 }
 
-.bg-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(232, 243, 248, 0.3);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.page-portfolio .bg-overlay {
-  display: none;
-}
-
 .top-container {
   position: relative;
   z-index: 1;
@@ -426,6 +414,7 @@ progress {
   cursor: pointer;
   display: block;
   border-radius: 3px;
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out), box-shadow var(--dur-base) ease;
 }
 .letter-card:hover {
   transform: translateY(-8px) scale(1.03);
@@ -455,7 +444,6 @@ progress {
   left: 24%;
   width: 56%;
   height: 56%;
-  transform: rotate(-6deg);
   transform-origin: center center;
   display: flex;
   flex-direction: column;
@@ -702,21 +690,6 @@ progress {
   border-radius: 3px;
 }
 
-.tl-scroll-hint {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(46, 92, 112, 0.4);
-  animation: hintFloat 2.4s ease-in-out infinite;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
 @media (max-width: 600px) {
   .tl-paper {
     padding: 2rem 1.75rem;
@@ -886,11 +859,31 @@ progress {
   margin-top: var(--space-sm);
 }
 .link-to-page a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #b83020;
+  color: #d04030;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+}
+.link-to-page a:focus-visible {
+  outline: 2px solid #b83020;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+.link-to-page a {
+  transition: color var(--dur-base) ease, transform var(--dur-base) var(--ease-out);
+}
+.link-to-page a:hover {
+  color: #b8904a;
+  transform: translateX(-4px);
 }
 
 .skills-grid {
@@ -1094,13 +1087,6 @@ progress {
   transform: translateX(-5%) scale(0.98);
   opacity: 0;
   transition: none !important;
-}
-
-.detail-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
 }
 
 .detail-wrap {

@@ -1,0 +1,60 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+// =============================================================================
+//  _header.scss
+//  サイトヘッダー・グローバルナビゲーション
+// =============================================================================
+
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba($linen, 0.90);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid $ice-blue-soft;
+  transition: box-shadow var(--dur-base) ease;
+
+  // スクロール時：水色の柔らかい影
+  &.is-scrolled {
+    box-shadow: 0 2px 18px rgba($ice-blue, 0.22);
+  }
+}
+
+.header-inner {
+  @include section-container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: $text-main;
+  transition: opacity var(--dur-base) ease;
+  &:hover { opacity: 0.65; }
+
+  // ✦ マークは赤アクセント
+  &-mark { color: $crimson; font-size: 1rem; }
+}
+
+.global-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.nav-link {
+  @include label-text(0.78rem, $text-sub);
+  @include underline-hover($crimson);
+  @include focus-ring($crimson);
+  transition: color var(--dur-base) ease;
+  &:hover { color: $crimson-mid; }
+}

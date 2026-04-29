@@ -1,0 +1,144 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+// =============================================================================
+//  _portfolio.scss
+//  portfolio.html — トラックリスト型ヒーロー（手紙カード + セクション一覧）
+// =============================================================================
+
+// 罫線間隔の統一値
+// ヘッダー下 / リスト上下 / フッター上 すべての「罫線↔コンテンツ」間隔を揃える
+$tl-gap: 1.4rem;
+
+
+// ── 手紙カード（bg-top.JPG 背景 + 白オーバーレイ）──────────
+.tl-paper {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 100%);
+  background-image: url('../../images/bg-top.JPG');
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  padding: 2.8rem 3rem 2.4rem;
+  box-shadow:
+    0 2px 0 $ice-blue-soft,
+    0 16px 48px rgba($ice-blue, 0.22),
+    0 4px 16px rgba($crimson, 0.06);
+  animation: paperDrop 0.8s var(--ease-out) 0.15s both;
+
+  // 白リネンの半透明オーバーレイ（テキスト可読性確保）
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba($linen, 0.72);
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * { position: relative; z-index: 1; }
+}
+
+
+// ── 手紙ヘッダー ────────────────────────────────────────────
+.tl-paper-header {
+  padding-bottom: $tl-gap;   // 罫線の上側（内容→罫線）
+  margin-bottom:  $tl-gap;   // 罫線の下側（罫線→リスト）
+  border-bottom: 1px solid $gold-pale;
+}
+
+.tl-title {
+  @include display-text(2rem, $text-main);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+
+// ── トラックリスト ──────────────────────────────────────────
+.tl-list { list-style: none; display: flex; flex-direction: column; }
+
+.tl-item {
+  border-bottom: 1px solid rgba($ice-blue, 0.18);
+  animation: tlItemIn 0.6s var(--ease-out) calc(0.35s + var(--i, 0) * 0.09s) both;
+  &:first-child { border-top: 1px solid rgba($ice-blue, 0.18); }
+}
+
+
+// ── クリッカブル行 ──────────────────────────────────────────
+.tl-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: $tl-gap 0.2rem;   // 罫線との間隔を $tl-gap に揃える
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $text-main;
+  text-align: left;
+  border-radius: 2px;
+  transition:
+    background-color var(--dur-base) ease,
+    transform        var(--dur-base) var(--ease-out);
+  @include focus-ring($crimson);
+
+  // ホバー：薄い水色背景 + 右にスライド
+  &:hover {
+    background-color: rgba($ice-blue, 0.14);
+    transform: translateX(4px);
+    .tl-arrow { transform: translateX(4px); color: $ice-blue-mid; }
+  }
+}
+
+.tl-num  { @include label-text(0.72rem, $crimson); letter-spacing: 0.1em; min-width: 2rem; flex-shrink: 0; }
+.tl-text { display: flex; align-items: baseline; gap: 0.75rem; flex: 1; min-width: 0; }
+.tl-name { @include display-text(1.35rem, $text-main); white-space: nowrap; }
+
+.tl-sub {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: $text-sub;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tl-arrow {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: $gold;   // 矢印はゴールド（小物アクセント）
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-out), color var(--dur-base) ease;
+}
+
+
+// ── 手紙フッター ────────────────────────────────────────────
+.tl-paper-footer {
+  margin-top:  $tl-gap;   // 罫線の上側（リスト→罫線）
+  padding-top: $tl-gap;   // 罫線の下側（罫線→フッター内容）
+  border-top: 1px solid $gold-pale;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tl-sender { @include label-text(0.68rem, $ice-blue-mid); }
+
+.tl-back-letter {
+  @include label-text(0.65rem, $text-sub);
+  transition: color var(--dur-base) ease;
+  &:hover { color: $crimson-mid; }
+  @include focus-ring($crimson);
+}
+
+// ── レスポンシブ ────────────────────────────────────────────
+@media (max-width: 600px) {
+  .tl-paper { padding: 2rem 1.75rem; }
+  .tl-title { font-size: 1.6rem; }
+  .tl-name  { font-size: 1.15rem; }
+  .tl-sub   { display: none; }
+}

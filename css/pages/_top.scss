@@ -1,0 +1,161 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+// =============================================================================
+//  _top.scss
+//  index.html — 手紙トップページ
+// =============================================================================
+
+.page-top {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  // background-image: url('../../images/bg-top.JPG');
+  // background-size: cover;
+  // background-position: center;
+  // overflow: hidden;
+  // position: relative;
+  background-color: $ice-blue-pale;
+}
+
+// オーバーレイ：水色の薄いベール（暗くしすぎない）
+// .bg-overlay {
+//   position: fixed;
+//   inset: 0;
+//   background: rgba($ice-blue-pale, 0.30);
+//   pointer-events: none;
+//   z-index: 0;
+// }
+
+// portfolio.html ではオーバーレイ不要
+// .page-portfolio .bg-overlay { display: none; }
+
+.top-container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: var(--space-md);
+}
+
+.letter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hint-text {
+  @include label-text(0.72rem, rgba($text-on-blue, 0.70));
+  user-select: none;
+  animation: hintFloat 2.6s ease-in-out infinite;
+}
+
+// ── 手紙カード（img + テキストオーバーレイの親） ────────────
+// letter.JPG は正方形。
+// 表示幅 300px を基準に位置・角度をパーセントで算出。
+.letter-card {
+  position: relative;
+  width: 300px;
+  cursor: pointer;
+  display: block;
+  border-radius: 3px;
+  // @include soft-shadow(2);
+  // animation: letterAppear 0.9s var(--ease-out) 0.1s both;
+  transition:
+    transform  var(--dur-base) var(--ease-out),
+    opacity    var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) ease;
+
+  &:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow:
+      0 20px 48px rgba($ice-blue, 0.30),
+      0 6px 18px rgba($crimson, 0.10);
+  }
+
+  @include focus-ring($ice-blue);
+
+  &.is-flying {
+    transform: translateY(-110px) scale(1.07) !important;
+    opacity: 0 !important;
+    transition: transform 0.5s var(--ease-out), opacity 0.5s var(--ease-out);
+    pointer-events: none;
+  }
+}
+
+// 手紙画像本体（will-change は親 .letter-card が持つ）
+.letter {
+  width: 100%;
+  display: block;
+  border-radius: 3px;
+}
+
+// ── テキストオーバーレイ ────────────────────────────────────
+// カード白紙の領域に重ねる（画像座標に合わせて調整）
+.letter-text {
+  position: absolute;
+  top:    20%;
+  left:   24%;
+  width:  56%;
+  height: 56%;
+  transform-origin: center center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  pointer-events: none;
+  user-select: none;
+}
+
+// 名前（最も大きく・Serif）
+.letter-text__name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: $text-main;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-align: center;
+  transform: rotate(-1deg);   // 手書き感のわずかな傾き
+}
+
+// 役職（小さめ・モノスペース）
+.letter-text__role {
+  @include label-text(0.48rem, $ice-blue-mid);
+  letter-spacing: 0.18em;
+  text-align: center;
+  transform: rotate(-1deg);
+}
+
+// 開封を促す一文（最小・イタリック）
+.letter-text__open {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.52rem;
+  color: rgba($crimson, 0.60);
+  letter-spacing: 0.12em;
+  text-align: center;
+  margin-top: 0.4em;
+  transform: rotate(-1deg);
+}
+
+.sender-label {
+  @include label-text(0.72rem, rgba($text-on-blue, 0.60));
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: letterAppear 0.9s var(--ease-out) 0.3s both;
+}
+
+.sender-mark { color: $ice-blue-mid; font-size: 0.8rem; }
+
+@media (max-width: 480px) {
+  .letter-card { width: 240px; }
+
+  .letter-text__name { font-size: 0.85rem; }
+  .letter-text__role { font-size: 0.40rem; }
+  .letter-text__open { font-size: 0.42rem; }
+}

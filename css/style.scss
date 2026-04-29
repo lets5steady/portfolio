@@ -1,0 +1,22 @@
+// =============================================================================
+//  style.scss  — エントリーポイント
+//
+//  ファイル構成：
+//    scss/
+//      _index.scss      forward する中継モジュール
+//      _variables.scss  カラーパレット・CSS カスタムプロパティ
+//      _mixins.scss     再利用可能な Mixin
+//      _base.scss       リセット・ベース・Keyframes・アクセシビリティ
+//      _router.scss     SPA ビュー切り替えアニメーション
+//      _header.scss     サイトヘッダー・グローバルナビ
+//      _sections.scss   共通セクション・About・Works・Skills・Vision・フッター・レスポンシブ
+//      _top.scss        index.html 手紙トップページ
+//      _portfolio.scss  portfolio.html トラックリスト型ヒーロー
+//
+//  各パーシャルは先頭で @use 'index' as * を宣言し、
+//  変数・Mixin を名前空間なしで参照できる。
+// =============================================================================
+
+@use "commons";
+@use "global";
+@use "pages";
