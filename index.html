@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SASAKI'S PORTFOLIO</title>
+  <meta name="description" content="佐々木のポートフォリオです。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" type="module"></script>
+</head>
+
+<body class="page-top">
+  <main class="top-container" role="main">
+    <div class="letter-wrapper">
+
+      <!-- ヒントテキスト（浮遊アニメーション） -->
+      <p class="hint-text" aria-live="polite">クリックして開封する</p>
+
+      <!-- 手紙 + テキストオーバーレイをまとめるコンテナ -->
+      <div class="letter-card" id="letterImg" role="button" tabindex="0" aria-label="手紙を開いてポートフォリオを見る">
+        <img
+          class="letter"
+          src="images/letter.PNG"
+          alt="封筒に入った手紙。クリックするとポートフォリオが開きます"
+          aria-hidden="true"
+        >
+
+        <!-- カード上のテキスト：画像の角度・位置に合わせて配置 -->
+        <div class="letter-text" aria-hidden="true">
+          <p class="letter-text__name">Sasaki Uta</p>
+          <p class="letter-text__role">Frontend Engineer Corse</p>
+          <p class="letter-text__motto">— Slow and Steady —</p>
+        </div>
+      </div>
+
+      <p class="hint-text" aria-hidden="true">
+        ✦ — open to read —
+      </p>
+
+    </div>
+  </main>
+</body>
+</html>
