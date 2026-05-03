@@ -898,6 +898,16 @@ progress {
     grid-template-columns: 70px 1fr;
   }
 }
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+div li {
+  list-style: none;
+}
+
 .view {
   position: fixed;
   inset: 0;
@@ -1018,22 +1028,20 @@ progress {
 }
 .works-stage {
   display: flex;
-  gap: var(--space-md);
-  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--space-lg);
 }
 
 .works-feature {
-  flex: 1;
-  position: sticky;
-  top: 2.5rem;
-  min-height: 2rem;
+  width: 100%;
+  position: static;
 }
 
 .works-list {
-  flex: 1;
-  list-style: none;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  gap: var(--space-md);
 }
 
 .work-item {
@@ -1055,7 +1063,7 @@ progress {
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 0 0 1px #c8dfe9;
-  gap: var(--space-xs);
+  gap: var(--space-md);
 }
 
 .works-feature .work-card {
@@ -1087,54 +1095,9 @@ progress {
   display: none;
 }
 .works-feature .work-images {
-  display: flex;
   align-items: stretch;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   background-color: #e8f3f8;
-  padding: 0;
-}
-
-.work-figure {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  margin: 0;
-}
-.work-figure img {
-  display: block;
-  border-radius: 0 0 4px 4px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
-  background-color: #f0e8e0;
-}
-.work-figure figcaption {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(74, 56, 40, 0.45);
-  padding-bottom: var(--space-xs);
-}
-
-.work-figure--pc {
-  flex: 1;
-  min-width: 0;
-}
-.work-figure--pc img {
-  width: 100%;
-  height: 420px;
-}
-
-.work-figure--sp {
-  width: 100px;
-  flex-shrink: 0;
-}
-.work-figure--sp img {
-  width: 100%;
-  height: 420px;
 }
 
 .work-body {
@@ -1142,9 +1105,6 @@ progress {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-}
-.works-list .work-body {
-  padding: 0.85rem var(--space-md);
 }
 
 .work-meta {
@@ -1192,7 +1152,6 @@ progress {
   text-decoration: none;
   border-bottom: 1px solid transparent;
   padding: 0.75em 1em;
-  margin-left: -1em;
   border-radius: 3px;
   transition: color var(--dur-base) ease, gap var(--dur-base) var(--ease-out), background-color var(--dur-base) ease, border-color var(--dur-base) ease;
 }
@@ -1205,29 +1164,4 @@ progress {
   outline: 2px solid #b83020;
   outline-offset: 4px;
   border-radius: 3px;
-}
-
-@media (max-width: 768px) {
-  .works-stage {
-    flex-direction: column;
-  }
-  .works-feature {
-    position: static;
-    width: 100%;
-  }
-  .works-list {
-    width: 100%;
-  }
-  .work-figure--pc img,
-  .work-figure--sp img {
-    height: 260px;
-  }
-}
-@media (max-width: 480px) {
-  .work-body {
-    padding: var(--space-sm);
-  }
-  .work-figure--sp {
-    width: 70px;
-  }
 }/*# sourceMappingURL=style.css.map */
