@@ -472,11 +472,11 @@ progress {
 
 .letter-text__role {
   font-family: var(--font-mono);
-  font-size: var(--fontsize-label);
+  font-size: 0.5rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #6aa0b8;
   text-align: center;
+  color: #6aa0b8;
 }
 
 .letter-text__motto {
