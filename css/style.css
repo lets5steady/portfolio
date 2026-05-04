@@ -740,14 +740,26 @@ progress {
 }
 
 .skill-header {
+  padding: 0.5rem;
   display: flex;
+  align-items: center;
   gap: var(--space-xs);
   margin-bottom: var(--space-xs);
+  background-color: #c8dfe9;
+}
+
+.skill-icon {
+  flex-basis: 25px;
+  display: flex;
+  gap: var(--space-xs);
+}
+.skill-icon img {
+  aspect-ratio: 1/1;
 }
 
 .skill-name {
   font-family: var(--font-mono);
-  font-size: var(--fontsize-item);
+  font-size: var(--fontsize-body);
   color: #4a3828;
 }
 
@@ -770,7 +782,7 @@ progress {
 
 .skill-note {
   font-size: var(--fontsize-item);
-  color: rgba(74, 56, 40, 0.45);
+  color: #7a6258;
 }
 
 .github-cta {
