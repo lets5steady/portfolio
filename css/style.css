@@ -1013,11 +1013,6 @@ div li {
   gap: var(--space-lg);
 }
 
-.works-feature {
-  width: 100%;
-  position: static;
-}
-
 .works-list {
   width: 100%;
   display: flex;
@@ -1055,9 +1050,6 @@ div li {
   overflow: hidden;
   box-shadow: 0 2px 0 #c8dfe9, 0 8px 32px rgba(139, 184, 204, 0.14);
 }
-.works-feature .work-card .work-body {
-  padding-bottom: var(--space-lg);
-}
 .works-feature .work-card.is-entering {
   animation: workFadeIn 0.28s var(--ease-out) both;
 }
@@ -1082,7 +1074,7 @@ div li {
 }
 
 .work-body {
-  padding: var(--space-md);
+  padding: var(--space-sm);
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);

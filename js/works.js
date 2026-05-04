@@ -86,8 +86,10 @@ export function initWorks() {
  * @param {Map}                  itemMap
  * @param {HTMLElement}          featureCol
  */
+
+
 function moveToFeature(activeId, prevId, itemMap, featureCol) {
-  // 前のアイテムを #worksList の元の位置に戻す
+  // 1. 前のアイテムを元の位置（placeholderの直前）に戻す
   if (prevId) {
     const prev = itemMap.get(prevId);
     if (prev) {
@@ -96,13 +98,20 @@ function moveToFeature(activeId, prevId, itemMap, featureCol) {
     }
   }
 
-  // featureCol の子を安全に除去（innerHTML = '' は使わない）
+  // 2. featureCol の中身を空にする（念のための安全策）
   while (featureCol.firstChild) {
     featureCol.removeChild(featureCol.firstChild);
   }
 
-  // 新しいアイテムを #worksFeature へ移動
+  // 3. 新しいアイテムを取得し、featureCol へ移動（ここで中身が入れ替わる）
   const next = itemMap.get(activeId);
   if (!next) return;
   featureCol.appendChild(next.item);
+
+  // 4. 移動が完了し、高さが決まった後にスクロールを実行
+  const scrollBehavior = prefersReducedMotion() ? 'auto' : 'smooth';
+  featureCol.scrollIntoView({
+    behavior: scrollBehavior,
+    block: 'start'
+  });
 }
