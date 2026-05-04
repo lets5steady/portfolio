@@ -21,6 +21,7 @@ export function initLetterTop() {
     /* 二重クリック防止：リスナーを即解除 */
     letter.removeEventListener('click',   flyAndNavigate);
     letter.removeEventListener('keydown', onKeyDown);
+      window.location.href = 'portfolio.html';
 
     /* アニメーション無効環境：即遷移 */
     if (prefersReducedMotion()) {
@@ -31,10 +32,10 @@ export function initLetterTop() {
     letter.style.willChange = 'transform, opacity';
     letter.classList.add('is-flying');
 
-    /* CSS transition の duration（0.5s）に合わせて遷移 */
+    /* CSS transition の duration（0.25s）に合わせて遷移 */
     setTimeout(() => {
       window.location.href = 'portfolio.html';
-    }, 500);
+    }, 250);
   }
 
   /** Enter / Space キーで flyAndNavigate を発火 */
