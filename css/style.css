@@ -539,8 +539,7 @@ progress {
   font-size: 2rem;
   letter-spacing: 0.02em;
   color: #4a3828;
-  letter-spacing: 0.08em;
-  line-height: 1;
+  letter-spacing: 0.04em;
 }
 
 .tl-list {
@@ -1035,10 +1034,9 @@ div li {
   background-color: rgba(139, 184, 204, 0.08);
 }
 
-.works-list {
+.work-item .work-card {
   border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 0 0 1px #c8dfe9;
+  box-shadow: 0 2px 0 #c8dfe9, 0 8px 32px rgba(139, 184, 204, 0.14);
   gap: var(--space-md);
 }
 
@@ -1074,7 +1072,7 @@ div li {
 }
 
 .work-body {
-  padding: var(--space-sm);
+  padding: var(--space-md);
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -1103,7 +1101,7 @@ div li {
 }
 
 .work-desc {
-  font-size: 0.85rem;
+  font-size: var(--fontsize-body);
   line-height: 1.85;
   color: #7a6258;
 }
@@ -1119,7 +1117,6 @@ div li {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #b83020;
-  margin-top: var(--space-xs);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   padding: 0.75em 1em;
