@@ -294,6 +294,10 @@ progress {
   --font-display: 'DM Serif Display', Georgia, serif;
   --font-mono: 'DM Mono', 'Courier New', monospace;
   --font-body: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  --fontsize-display: 2rem;
+  --fontsize-body: 1rem;
+  --fontsize-item: 0.875rem;
+  --fontsize-label: 0.75rem;
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
@@ -398,7 +402,7 @@ progress {
 
 .hint-text {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(46, 92, 112, 0.7);
@@ -468,7 +472,7 @@ progress {
 
 .letter-text__role {
   font-family: var(--font-mono);
-  font-size: 0.5rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #6aa0b8;
@@ -525,17 +529,15 @@ progress {
 }
 
 .tl-paper-header {
-  padding-bottom: 1.4rem;
-  margin-bottom: 1.4rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
   border-bottom: 1px solid #f0e4cc;
 }
 
 .tl-title {
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  letter-spacing: 0.02em;
   color: #4a3828;
   letter-spacing: 0.08em;
   line-height: 1;
@@ -560,7 +562,7 @@ progress {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  padding: 1.4rem 0.2rem;
+  padding: 1.5rem 0.5rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -585,7 +587,7 @@ progress {
 
 .tl-num {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #b83020;
@@ -605,16 +607,14 @@ progress {
 .tl-name {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  letter-spacing: 0.02em;
   color: #4a3828;
   white-space: nowrap;
 }
 
 .tl-sub {
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: #7a6258;
   letter-spacing: 0.05em;
   white-space: nowrap;
@@ -624,7 +624,7 @@ progress {
 
 .tl-arrow {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: #c9a96e;
   margin-left: auto;
   flex-shrink: 0;
@@ -632,37 +632,13 @@ progress {
 }
 
 .tl-paper-footer {
-  margin-top: 1.4rem;
-  padding-top: 1.4rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
   border-top: 1px solid #f0e4cc;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.tl-sender {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #6aa0b8;
-}
-
-.tl-back-letter {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #7a6258;
-  transition: color var(--dur-base) ease;
-}
-.tl-back-letter:hover {
-  color: #d04030;
-}
-.tl-back-letter:focus-visible {
-  outline: 2px solid #b83020;
-  outline-offset: 4px;
-  border-radius: 3px;
+.tl-paper-footer a {
+  text-decoration: none;
 }
 
 @media (max-width: 600px) {
@@ -681,7 +657,7 @@ progress {
 }
 .section-index {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #b83020;
@@ -690,9 +666,7 @@ progress {
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  letter-spacing: 0.02em;
   color: #4a3828;
 }
 
@@ -706,16 +680,14 @@ progress {
 .about-name {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  letter-spacing: 0.02em;
   color: #4a3828;
   margin-bottom: var(--space-xs);
 }
 
 .about-role {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #b83020;
@@ -723,7 +695,7 @@ progress {
 }
 
 .about-text {
-  font-size: 0.93rem;
+  font-size: var(--fontsize-body);
   line-height: 1.9;
   color: #7a6258;
   margin-bottom: var(--space-sm);
@@ -740,7 +712,7 @@ progress {
   gap: var(--space-sm);
   padding: 0.85rem 0;
   border-bottom: 1px solid #f0e4cc;
-  font-size: 0.85rem;
+  font-size: var(--fontsize-item);
 }
 .meta-item:first-child {
   border-top: 1px solid #f0e4cc;
@@ -748,7 +720,7 @@ progress {
 
 .meta-label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(74, 56, 40, 0.45);
@@ -769,21 +741,19 @@ progress {
 
 .skill-header {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  gap: var(--space-xs);
   margin-bottom: var(--space-xs);
 }
 
 .skill-name {
   font-family: var(--font-mono);
-  font-size: 0.88rem;
-  letter-spacing: 0.08em;
+  font-size: var(--fontsize-item);
   color: #4a3828;
 }
 
 .skill-badge--learning {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #b83020;
@@ -799,9 +769,8 @@ progress {
 }
 
 .skill-note {
-  font-size: 0.75rem;
+  font-size: var(--fontsize-item);
   color: rgba(74, 56, 40, 0.45);
-  line-height: 1.6;
 }
 
 .github-cta {
@@ -816,7 +785,7 @@ progress {
   align-items: center;
   gap: 0.6rem;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #4a3828;
@@ -856,9 +825,7 @@ progress {
 .vision-quote {
   font-family: var(--font-display);
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  letter-spacing: 0.02em;
   color: #b83020;
   font-style: italic;
   line-height: 1.6;
@@ -870,7 +837,7 @@ progress {
 }
 
 .vision-text {
-  font-size: 0.95rem;
+  font-size: var(--fontsize-body);
   line-height: 2;
   color: #7a6258;
   margin-bottom: var(--space-md);
@@ -985,15 +952,15 @@ div li {
   margin-bottom: var(--space-lg);
   padding-bottom: var(--space-sm);
   border-bottom: 1px solid #c8dfe9;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
-.detail-back {
+.detail-back,
+.tl-back-letter {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #6aa0b8;
@@ -1001,17 +968,19 @@ div li {
   border: none;
   cursor: pointer;
   padding: 0.5rem 0;
-  margin-bottom: 2rem;
 }
-.detail-back:focus-visible {
+.detail-back:focus-visible,
+.tl-back-letter:focus-visible {
   outline: 2px solid #b83020;
   outline-offset: 4px;
   border-radius: 3px;
 }
-.detail-back {
+.detail-back,
+.tl-back-letter {
   transition: color var(--dur-base) ease, transform var(--dur-base) var(--ease-out);
 }
-.detail-back:hover {
+.detail-back:hover,
+.tl-back-letter:hover {
   color: #d04030;
   transform: translateX(-4px);
 }
@@ -1115,7 +1084,7 @@ div li {
 
 .work-stack {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(74, 56, 40, 0.45);
@@ -1124,9 +1093,7 @@ div li {
 .work-title {
   font-family: var(--font-display);
   font-size: clamp(1.05rem, 2vw, 1.45rem);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  letter-spacing: 0.02em;
   color: #4a3828;
   line-height: 1.3;
 }
@@ -1144,7 +1111,7 @@ div li {
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fontsize-label);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #b83020;
