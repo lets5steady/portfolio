@@ -1036,8 +1036,7 @@ div li {
 }
 .works__feature .work-card__images {
   display: flex;
-  align-items: stretch;
-  gap: var(--space-md);
+  flex-direction: column;
   background-color: #e8f3f8;
 }
 
