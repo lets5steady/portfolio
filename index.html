@@ -12,35 +12,46 @@
   <script src="js/main.js" type="module"></script>
 </head>
 
-<body class="page-top">
-  <main class="top-container" role="main">
-    <div class="letter-wrapper">
+<body class="page page--top">
+  <main class="page__main" role="main">
 
-      <!-- ヒントテキスト（浮遊アニメーション） -->
-      <p class="hint-text" aria-live="polite">クリックして開封する</p>
+    <!-- ============================================================
+         Block: letter-scene
+         ============================================================ -->
+    <div class="letter-scene">
 
-      <!-- 手紙 + テキストオーバーレイをまとめるコンテナ -->
-      <div class="letter-card" id="letterImg" role="button" tabindex="0" aria-label="手紙を開いてポートフォリオを見る">
+      <!-- Element: hint（上部） -->
+      <p class="letter-scene__hint" aria-live="polite">クリックして開封する</p>
+
+      <!-- Block: letter-card -->
+      <div class="letter-card"
+           id="letterImg"
+           role="button"
+           tabindex="0"
+           aria-label="手紙を開いてポートフォリオを見る">
+
         <img
-          class="letter"
+          class="letter-card__image"
           src="images/letter.PNG"
           alt="封筒に入った手紙。クリックするとポートフォリオが開きます"
           aria-hidden="true"
         >
 
-        <!-- カード上のテキスト：画像の角度・位置に合わせて配置 -->
-        <div class="letter-text" aria-hidden="true">
-          <p class="letter-text__name">Sasaki Uta</p>
-          <p class="letter-text__role">Frontend Engineer Corse</p>
-          <p class="letter-text__motto">— Slow and Steady —</p>
+        <!-- Element: overlay text -->
+        <div class="letter-card__body" aria-hidden="true">
+          <p class="letter-card__name">Sasaki Uta</p>
+          <p class="letter-card__role">Frontend Engineer Corse</p>
+          <p class="letter-card__motto">— Slow and Steady —</p>
         </div>
       </div>
 
-      <p class="hint-text" aria-hidden="true">
+      <!-- Element: hint（下部） -->
+      <p class="letter-scene__hint" aria-hidden="true">
         ✦ — open to read —
       </p>
 
-    </div>
+    </div><!-- /.letter-scene -->
+
   </main>
 </body>
 </html>

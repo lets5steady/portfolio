@@ -11,193 +11,197 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" type="module"></script>
 </head>
-<body class="page-portfolio">
+<body class="page page--portfolio">
 
   <!-- ==================================================
-       VIEW: トラックリスト（初期表示）
-       data-view="menu" — 手紙カード + セクション一覧
+       Block: view  /  Modifier: --menu（初期表示）
        ================================================== -->
-  <div class="view" id="view-menu" data-view="menu" aria-label="ポートフォリオ目次">
+  <div class="view view--menu" id="view-menu" data-view="menu" aria-label="ポートフォリオ目次">
 
-    <div class="bg-overlay" aria-hidden="true"></div>
+    <div class="view__overlay" aria-hidden="true"></div>
 
-    <div class="tl-paper">
+    <!-- Block: tracklist-paper -->
+    <div class="tracklist">
 
-      <header class="tl-paper-header">
-        <h1 class="tl-title">SASAKI'S PORTFOLIO</h1>
+      <header class="tracklist__header">
+        <h1 class="tracklist__title">SASAKI'S PORTFOLIO</h1>
       </header>
 
       <nav aria-label="セクション一覧">
-        <ol class="tl-list">
+        <ol class="tracklist__list">
 
-          <li class="tl-item" style="--i:0">
-            <!-- data-target でどのビューに切り替えるかを指定 -->
-            <button class="tl-link" data-target="about" aria-label="Aboutセクションへ">
-              <span class="tl-num" aria-hidden="true">01</span>
-              <div class="tl-text">
-                <span class="tl-name">About</span>
-                <span class="tl-sub">自己紹介</span>
+          <li class="tracklist__item" style="--i:0">
+            <button class="tracklist__link" data-target="about" aria-label="Aboutセクションへ">
+              <span class="tracklist__num" aria-hidden="true">01</span>
+              <div class="tracklist__text">
+                <span class="tracklist__name">About</span>
+                <span class="tracklist__sub">自己紹介</span>
               </div>
-              <span class="tl-arrow" aria-hidden="true">→</span>
+              <span class="tracklist__arrow" aria-hidden="true">→</span>
             </button>
           </li>
 
-          <li class="tl-item" style="--i:1">
-            <button class="tl-link" data-target="works" aria-label="Worksセクションへ">
-              <span class="tl-num" aria-hidden="true">02</span>
-              <div class="tl-text">
-                <span class="tl-name">Works</span>
-                <span class="tl-sub">制作物紹介</span>
+          <li class="tracklist__item" style="--i:1">
+            <button class="tracklist__link" data-target="works" aria-label="Worksセクションへ">
+              <span class="tracklist__num" aria-hidden="true">02</span>
+              <div class="tracklist__text">
+                <span class="tracklist__name">Works</span>
+                <span class="tracklist__sub">制作物紹介</span>
               </div>
-              <span class="tl-arrow" aria-hidden="true">→</span>
+              <span class="tracklist__arrow" aria-hidden="true">→</span>
             </button>
           </li>
 
-          <li class="tl-item" style="--i:2">
-            <button class="tl-link" data-target="skills" aria-label="Skillsセクションへ">
-              <span class="tl-num" aria-hidden="true">03</span>
-              <div class="tl-text">
-                <span class="tl-name">Skills</span>
-                <span class="tl-sub">技術スタック</span>
+          <li class="tracklist__item" style="--i:2">
+            <button class="tracklist__link" data-target="skills" aria-label="Skillsセクションへ">
+              <span class="tracklist__num" aria-hidden="true">03</span>
+              <div class="tracklist__text">
+                <span class="tracklist__name">Skills</span>
+                <span class="tracklist__sub">技術スタック</span>
               </div>
-              <span class="tl-arrow" aria-hidden="true">→</span>
+              <span class="tracklist__arrow" aria-hidden="true">→</span>
             </button>
           </li>
 
-          <li class="tl-item" style="--i:3">
-            <button class="tl-link" data-target="vision" aria-label="Visionセクションへ">
-              <span class="tl-num" aria-hidden="true">04</span>
-              <div class="tl-text">
-                <span class="tl-name">Vision</span>
-                <span class="tl-sub">展望</span>
+          <li class="tracklist__item" style="--i:3">
+            <button class="tracklist__link" data-target="vision" aria-label="Visionセクションへ">
+              <span class="tracklist__num" aria-hidden="true">04</span>
+              <div class="tracklist__text">
+                <span class="tracklist__name">Vision</span>
+                <span class="tracklist__sub">展望</span>
               </div>
-              <span class="tl-arrow" aria-hidden="true">→</span>
+              <span class="tracklist__arrow" aria-hidden="true">→</span>
             </button>
           </li>
 
         </ol>
       </nav>
 
-      <footer class="tl-paper-footer">
-        <a class="tl-back-letter" href="index.html" aria-label="手紙トップへ戻る">TOPページへ</a>
+      <footer class="tracklist__footer">
+        <a class="tracklist__back" href="index.html" aria-label="手紙トップへ戻る">TOPページへ</a>
       </footer>
 
-    </div><!-- /.tl-paper -->
+    </div><!-- /.tracklist -->
 
   </div><!-- /#view-menu -->
 
 
   <!-- ==================================================
-       VIEW: About
+       Block: view  /  Modifier: --about（About）
        ================================================== -->
-  <div class="view view--detail" id="view-about" data-view="about" hidden aria-labelledby="about-title">
+  <div class="view view--detail view--about" id="view-about" data-view="about" hidden aria-labelledby="about-title">
 
-    <div class="detail-bg" aria-hidden="true"></div>
+    <div class="view__bg" aria-hidden="true"></div>
 
-    <div class="detail-wrap">
+    <div class="view__inner">
 
-      <button class="detail-back" data-target="menu" aria-label="目次へ戻る">
+      <button class="view__back" data-target="menu" aria-label="目次へ戻る">
         目次へ
       </button>
 
-      <header class="detail-header js-reveal">
-        <span class="section-index" aria-hidden="true">01</span>
-        <h2 class="section-title" id="about-title">About</h2>
+      <!-- Block: section-header -->
+      <header class="section-header js-reveal">
+        <span class="section-header__index" aria-hidden="true">01</span>
+        <h2 class="section-header__title" id="about-title">About</h2>
       </header>
 
-      <div class="about-grid">
+      <!-- Block: about -->
+      <div class="about">
 
-        <div class="about-bio js-reveal">
-          <h3 class="about-name">Sasaki Uta</h3>
-          <p class="about-role">フロントエンドエンジニア養成科に在籍中</p>
-          <p class="about-text">
+        <!-- Element: bio -->
+        <div class="about__bio js-reveal">
+          <h3 class="about__name">Sasaki Uta</h3>
+          <p class="about__role">フロントエンドエンジニア養成科に在籍中</p>
+          <p class="about__text">
             学生時代は韓国語を専攻し、卒業後は語学力を活かせるスクール運営会社に入社。その後、元々興味があった美容の道へ進み、ネイリスト・美容皮膚科の受付として勤務。顧客対応を軸に、要望のヒアリング〜具体化、集客施策、在庫・数値管理、業務改善、リーダー業務まで幅広く経験してきました。
           </p>
-          <p class="about-text">
+          <p class="about__text">
             興味を持った分野について継続的に学び、知識を積み上げていくことにやりがいを感じます。具体例としては、学生時代に専攻していた韓国語の学習を卒業後も7年間継続しており、韓国語能力試験の最高級である6級を二度取得しました。<br>毎日新しい情報に触れ、意識的にインプット・アウトプットしていくという習慣は、IT業界においても必要不可欠だと考えています。
           </p>
         </div>
 
-        <div class="about-meta js-reveal">
+        <!-- Element: meta -->
+        <div class="about__meta js-reveal">
           <dl class="meta-list">
-            <div class="meta-item">
-              <dt class="meta-label">経歴</dt>
-              <dd class="meta-value">スクール運営スタッフ → ネイリスト → 美容皮膚科受付</dd>
+            <div class="meta-list__item">
+              <dt class="meta-list__label">経歴</dt>
+              <dd class="meta-list__value">スクール運営スタッフ → ネイリスト → 美容皮膚科受付</dd>
             </div>
-            <div class="meta-item">
-              <dt class="meta-label">希望勤務地</dt>
-              <dd class="meta-value">大阪府 / 兵庫県</dd>
+            <div class="meta-list__item">
+              <dt class="meta-list__label">希望勤務地</dt>
+              <dd class="meta-list__value">大阪府 / 兵庫県</dd>
             </div>
-            <div class="meta-item">
-              <dt class="meta-label">趣味</dt>
-              <dd class="meta-value">劇場で映画を観ること / 散歩</dd>
+            <div class="meta-list__item">
+              <dt class="meta-list__label">趣味</dt>
+              <dd class="meta-list__value">劇場で映画を観ること / 散歩</dd>
             </div>
-            <div class="meta-item">
-              <dt class="meta-label">特技</dt>
-              <dd class="meta-value">韓国語</dd>
+            <div class="meta-list__item">
+              <dt class="meta-list__label">特技</dt>
+              <dd class="meta-list__value">韓国語</dd>
             </div>
-            <div class="meta-item">
-              <dt class="meta-label">MBTI</dt>
-              <dd class="meta-value">INTJ（建築家）</dd>
+            <div class="meta-list__item">
+              <dt class="meta-list__label">MBTI</dt>
+              <dd class="meta-list__value">INTJ（建築家）</dd>
             </div>
           </dl>
         </div>
 
-      </div>
-    </div>
+      </div><!-- /.about -->
+    </div><!-- /.view__inner -->
   </div><!-- /#view-about -->
 
 
-<!-- ==================================================
-       VIEW: Works
+  <!-- ==================================================
+       Block: view  /  Modifier: --works（Works）
        ================================================== -->
-  <div class="view view--detail view--dark" id="view-works" data-view="works" hidden aria-labelledby="works-title">
+  <div class="view view--detail view--works" id="view-works" data-view="works" hidden aria-labelledby="works-title">
 
-    <div class="detail-wrap">
+    <div class="view__inner">
 
-      <button class="detail-back" data-target="menu" aria-label="目次へ戻る">
+      <button class="view__back" data-target="menu" aria-label="目次へ戻る">
         目次へ
       </button>
 
-      <header class="detail-header js-reveal">
-        <span class="section-index" aria-hidden="true">02</span>
-        <h2 class="section-title" id="works-title">Works</h2>
+      <!-- Block: section-header -->
+      <header class="section-header js-reveal">
+        <span class="section-header__index" aria-hidden="true">02</span>
+        <h2 class="section-header__title" id="works-title">Works</h2>
       </header>
 
-      <div class="works-stage js-reveal">
+      <!-- Block: works -->
+      <div class="works js-reveal">
 
-        <ol class="works-feature" id="worksFeature"
+        <ol class="works__feature" id="worksFeature"
              aria-live="polite" aria-label="選択中の制作物"></ol>
 
-        <ol class="works-list" id="worksList" aria-label="制作物一覧">
+        <ol class="works__list" id="worksList" aria-label="制作物一覧">
 
           <!-- ── 制作物 1 ── -->
-          <li class="work-item" data-work-id="1">
+          <li class="works__item" data-work-id="1">
+            <!-- Block: work-card -->
             <article class="work-card" aria-labelledby="work1-title">
 
-              <!-- テキスト（常に表示） -->
-              <div class="work-body">
-                <div class="work-meta">
-                  <span class="work-type">Web</span>
-                  <span class="work-stack">HTML / CSS / JavaScript</span>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="work-card__type">Web</span>
+                  <span class="work-card__stack">HTML / CSS / JavaScript</span>
                 </div>
-                <h3 class="work-title" id="work1-title">架空のクッキー専門店のwebサイト</h3>
-                <p class="work-desc">
+                <h3 class="work-card__title" id="work1-title">架空のクッキー専門店のwebサイト</h3>
+                <p class="work-card__desc">
                   授業で最初に作成したサイトです。<br>
                   Figmaでワイヤーフレーム、デザインカンプを作成したのちに、コーディング作業に入りました。<br>
                   高級感のある余白を保つため、商品紹介のレイアウトをデスクトップ版では3列、スマホ版では2列に収めるようグリッドレイアウトで制御しています。
                 </p>
-                <a class="work-link"
+                <a class="work-card__link"
                    href="https://lets5steady.github.io/ButterCollectionwebpage"
                    target="_blank" rel="noopener noreferrer">
                   - "Butter Collection"のこだわりクッキー -
                 </a>
               </div>
 
-              <!-- 画像（上段表示時のみ CSS で表示） -->
               <a href="https://lets5steady.github.io/ButterCollectionwebpage" target="_blank" rel="noopener noreferrer" aria-label="クッキー専門店のWebサイトを詳しく見る">
-                <div class="work-images" aria-hidden="true">
-                    <img src="images/butterCollection.jpg" alt="" fetchpriority="high">
+                <div class="work-card__images" aria-hidden="true">
+                  <img src="images/butterCollection.jpg" alt="" fetchpriority="high">
                 </div>
               </a>
 
@@ -205,210 +209,222 @@
           </li>
 
           <!-- ── 制作物 2 ── -->
-          <li class="work-item" data-work-id="2">
+          <li class="works__item" data-work-id="2">
             <article class="work-card" aria-labelledby="work2-title">
 
-              <!-- テキスト（常に表示） -->
-              <div class="work-body">
-                <div class="work-meta">
-                  <span class="work-type">App</span>
-                  <span class="work-stack">HTML / CSS / JavaScript</span>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="work-card__type">App</span>
+                  <span class="work-card__stack">HTML / CSS / JavaScript</span>
                 </div>
-                <h3 class="work-title" id="work2-title">ハングル学習アプリ</h3>
-                <p class="work-desc">
+                <h3 class="work-card__title" id="work2-title">ハングル学習アプリ</h3>
+                <p class="work-card__desc">
                   自主的に制作した韓国語学習のためのクイズアプリです。<br>
                   特技である韓国語を活かしたいと考え、「韓国語に初めて触れる方がハングルを読めるようになること」を目標に開発しました。<br>
                   コードはすべて生成AIを用いて実装しています。<br>
                   AIを活用しながらも一貫した設計思想を持ち、少しずつ修正を重ね、機能を追加していきました。<br>
                   LocalStorageを活用し、ブラウザを閉じてもデータが残る仕様です。
                 </p>
-                <a class="work-link"
+                <a class="work-card__link"
                    href="https://lets5steady.github.io/hangeul-quiz/"
                    target="_blank" rel="noopener noreferrer">
                   - 韓国語クイズに挑戦 -
                 </a>
               </div>
 
-              <!-- 画像（上段表示時のみ CSS で表示） -->
               <a href="https://lets5steady.github.io/hangeul-quiz/" target="_blank" rel="noopener noreferrer" aria-label="ハングル学習アプリを詳しく見る">
-                <div class="work-images" aria-hidden="true">
-                    <img src="images/hangeulQuiz.jpg" alt="" >
+                <div class="work-card__images" aria-hidden="true">
+                  <img src="images/hangeulQuiz.jpg" alt="">
                 </div>
               </a>
+
             </article>
           </li>
 
           <!-- ── 制作物 3 ── -->
-          <li class="work-item" data-work-id="3">
+          <li class="works__item" data-work-id="3">
             <article class="work-card" aria-labelledby="work3-title">
 
-              <!-- テキスト（常に表示） -->
-              <div class="work-body">
-                <div class="work-meta">
-                  <span class="work-type">Web</span>
-                  <span class="work-stack">HTML / CSS / JavaScript</span>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="work-card__type">Web</span>
+                  <span class="work-card__stack">HTML / CSS / JavaScript</span>
                 </div>
-                <h3 class="work-title" id="work3-title">架空の高級美顔器のLP</h3>
-                <p class="work-desc">
+                <h3 class="work-card__title" id="work3-title">架空の高級美顔器のLP</h3>
+                <p class="work-card__desc">
                   二度目に授業で作成したサイトです。<br>
                   前回とは異なり、Figmaでバリアブルやコンポーネントも活用しながら、ペルソナやカスタマージャーニーマップから作成しました。<br>
                   サイトの構成上、複数のHTMLが必要であったため、SCSSのmixin機能を有効活用し簡潔でわかりやすいコードを目指しました。
                 </p>
-                <a class="work-link"
+                <a class="work-card__link"
                    href="https://lets5steady.github.io/dermavance.lp/"
                    target="_blank" rel="noopener noreferrer">
                   - 50万円の美顔器の性能とは -
                 </a>
               </div>
 
-              <!-- 画像（上段表示時のみ CSS で表示） -->
-            <a href="https://lets5steady.github.io/dermavance.lp/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="美顔器LPを詳しく見る">              
-              <div class="work-images" aria-hidden="true">
-                  <img src="images/dermavance-firstview.jpg" alt="" >
-                  <img src="images/dermavance-design.jpg" alt="" >
-              </div>
-            </a>
+              <a href="https://lets5steady.github.io/dermavance.lp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="美顔器LPを詳しく見る">
+                <div class="work-card__images" aria-hidden="true">
+                  <img src="images/dermavance-firstview.jpg" alt="">
+                  <img src="images/dermavance-design.jpg" alt="">
+                </div>
+              </a>
 
             </article>
           </li>
 
-        </ol><!-- /.works-list -->
-      </div><!-- /.works-stage -->
+        </ol><!-- /.works__list -->
+      </div><!-- /.works -->
 
-    </div><!-- /.detail-wrap -->
+    </div><!-- /.view__inner -->
   </div><!-- /#view-works -->
 
 
   <!-- ==================================================
-       VIEW: Skills
+       Block: view  /  Modifier: --skills（Skills）
        ================================================== -->
-  <div class="view view--detail" id="view-skills" data-view="skills" hidden aria-labelledby="skills-title">
+  <div class="view view--detail view--skills" id="view-skills" data-view="skills" hidden aria-labelledby="skills-title">
 
-    <div class="detail-wrap">
+    <div class="view__inner">
 
-      <button class="detail-back" data-target="menu" aria-label="目次へ戻る">
+      <button class="view__back" data-target="menu" aria-label="目次へ戻る">
         目次へ
       </button>
 
-      <header class="detail-header js-reveal">
-        <span class="section-index" aria-hidden="true">03</span>
-        <h2 class="section-title" id="skills-title">Skills</h2>
+      <!-- Block: section-header -->
+      <header class="section-header js-reveal">
+        <span class="section-header__index" aria-hidden="true">03</span>
+        <h2 class="section-header__title" id="skills-title">Skills</h2>
       </header>
 
-      <div class="skills-grid">
+      <!-- Block: skill-grid -->
+      <div class="skill-grid">
 
-        <div class="skill-item js-reveal">
-          <div class="skill-header">
-            <span class="skill-name">HTML</span>
-            <div class="skill-icon" aria-hidden="true"><img src="images/html5.svg" alt="" ></div>
-          </div>
-          <p class="skill-note">セマンティックHTMLを意識した構造設計、画像のalt属性・フォーム要素のlabel付与など、基本的なアクセシビリティにも配慮した実装が可能です。<br>今後は、WAI-ARIAやキーボード操作への対応など、アクセシビリティの体系的理解を深め、多様な利用環境に対応できる設計力が必要だと考えています。</p>
-        </div>
-
-        <div class="skill-item js-reveal">
-          <div class="skill-header">
-            <span class="skill-name">CSS</span>
-            <div class="skill-icon" aria-hidden="true">
-              <img src="images/css.svg" alt="" >
-            </div>
-
-            <span class="skill-name">/ Sass</span>
-            <div class="skill-icon" aria-hidden="true">
-              <img src="images/sass.svg" alt="" >
+        <div class="skill-card js-reveal">
+          <div class="skill-card__header">
+            <span class="skill-card__name">HTML</span>
+            <div class="skill-card__icon" aria-hidden="true">
+              <img src="images/html5.svg" alt="">
             </div>
           </div>
-
-          
-          <p class="skill-note">Flexbox/Gridを用いたレイアウト、SCSS変数・Mixinを活用した効率的なスタイリングが可能です。<br>今後は案件単位の最適化に留まらず、レイアウトパターンやデザイントークンを基盤とした、より再現性の高い設計を目指します。</p>
+          <p class="skill-card__note">セマンティックHTMLを意識した構造設計、画像のalt属性・フォーム要素のlabel付与など、基本的なアクセシビリティにも配慮した実装が可能です。<br>今後は、WAI-ARIAやキーボード操作への対応など、アクセシビリティの体系的理解を深め、多様な利用環境に対応できる設計力が必要だと考えています。</p>
         </div>
 
-        <div class="skill-item js-reveal">
-          <div class="skill-header">
-            <span class="skill-name">JavaScript</span>
-            <div class="skill-icon" aria-hidden="true"><img src="images/javascript.svg" alt="" ></div>
+        <div class="skill-card js-reveal">
+          <div class="skill-card__header">
+            <span class="skill-card__name">CSS</span>
+            <div class="skill-card__icon" aria-hidden="true">
+              <img src="images/css.svg" alt="">
+            </div>
+            <span class="skill-card__name">/ Sass</span>
+            <div class="skill-card__icon" aria-hidden="true">
+              <img src="images/sass.svg" alt="">
+            </div>
           </div>
-          <p class="skill-note">ES6以降の構文、DOM操作、イベント制御、モジュール設計の基礎を習得。可読性と安全性を意識し、命名や処理の意図が伝わる記述を心がけています。<br>関数の責務分離の徹底や状態管理の整理、非同期処理やエラーハンドリングを含めた実装力の向上が必要だと実感しているため、今後も継続的に学習に取り組みます。</p>
+          <p class="skill-card__note">Flexbox/Gridを用いたレイアウト、SCSS変数・Mixinを活用した効率的なスタイリングが可能です。<br>今後は案件単位の最適化に留まらず、レイアウトパターンやデザイントークンを基盤とした、より再現性の高い設計を目指します。</p>
         </div>
 
-        <div class="skill-item js-reveal">
-          <div class="skill-header">
-            <span class="skill-name">Figma</span>
-            <div class="skill-icon" aria-hidden="true"><img src="images/figma.svg" alt="" ></div>
+        <div class="skill-card js-reveal">
+          <div class="skill-card__header">
+            <span class="skill-card__name">JavaScript</span>
+            <div class="skill-card__icon" aria-hidden="true">
+              <img src="images/javascript.svg" alt="">
+            </div>
           </div>
-          <p class="skill-note">ペルソナ設計・カスタマージャーニーを起点としたUI/UX設計に加え、コンポーネント・バリアブルを用いたデザインシステム構築、およびAuto Layoutによる構造的なレイアウト設計が可能です。<br>コンポーネント設計の最適化、複数プロジェクトで再利用可能なデザイン設計を行うことが今後の目標です。</p>
+          <p class="skill-card__note">ES6以降の構文、DOM操作、イベント制御、モジュール設計の基礎を習得。可読性と安全性を意識し、命名や処理の意図が伝わる記述を心がけています。<br>関数の責務分離の徹底や状態管理の整理、非同期処理やエラーハンドリングを含めた実装力の向上が必要だと実感しているため、今後も継続的に学習に取り組みます。</p>
         </div>
 
-
-        <div class="skill-item js-reveal">
-          <div class="skill-header">
-            <span class="skill-name">Dev Tools</span>
-            <div class="skill-icon" aria-hidden="true"><img src="images/github.svg" alt="" ></div>
+        <div class="skill-card js-reveal">
+          <div class="skill-card__header">
+            <span class="skill-card__name">Figma</span>
+            <div class="skill-card__icon" aria-hidden="true">
+              <img src="images/figma.svg" alt="">
+            </div>
           </div>
-          <p class="skill-note">Git / GitHubによるバージョン管理、npm、Viteなどのビルドツールの使用経験があります。</p>
+          <p class="skill-card__note">ペルソナ設計・カスタマージャーニーを起点としたUI/UX設計に加え、コンポーネント・バリアブルを用いたデザインシステム構築、およびAuto Layoutによる構造的なレイアウト設計が可能です。<br>コンポーネント設計の最適化、複数プロジェクトで再利用可能なデザイン設計を行うことが今後の目標です。</p>
         </div>
 
-        <!-- 学習中 -->
-        <div class="skill-item skill-item--learning js-reveal">
-          <div class="skill-header">
-            <span class="skill-name">React</span>
-            <div class="skill-icon" aria-hidden="true"><img src="images/react.svg" alt="" ></div>
-            <span class="skill-badge--learning" aria-label="学習中">学習中</span>
+        <div class="skill-card js-reveal">
+          <div class="skill-card__header">
+            <span class="skill-card__name">Dev Tools</span>
+            <div class="skill-card__icon" aria-hidden="true">
+              <img src="images/github.svg" alt="">
+            </div>
           </div>
-          <p class="skill-note">コンポーネント設計 / Hooks / SPA構築を学習中です。</p>
+          <p class="skill-card__note">Git / GitHubによるバージョン管理、npm、Viteなどのビルドツールの使用経験があります。</p>
         </div>
 
-      </div>
+        <!-- Modifier: --learning -->
+        <div class="skill-card skill-card--learning js-reveal">
+          <div class="skill-card__header">
+            <span class="skill-card__name">React</span>
+            <div class="skill-card__icon" aria-hidden="true">
+              <img src="images/react.svg" alt="">
+            </div>
+            <span class="skill-card__badge skill-card__badge--learning" aria-label="学習中">学習中</span>
+          </div>
+          <p class="skill-card__note">コンポーネント設計 / Hooks / SPA構築を学習中です。</p>
+        </div>
 
+      </div><!-- /.skill-grid -->
+
+      <!-- Block: github-cta -->
       <div class="github-cta js-reveal">
-        <a class="github-btn" href="https://github.com/lets5steady" target="_blank" rel="noopener noreferrer" aria-label="GitHubプロフィールを見る（新しいタブで開きます）">
-          <svg class="github-icon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+        <a class="github-cta__btn"
+           href="https://github.com/lets5steady"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="GitHubプロフィールを見る（新しいタブで開きます）">
+          <svg class="github-cta__icon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.216.69.825.572C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
           </svg>
           View on GitHub
-          <span class="btn-arrow" aria-hidden="true">→</span>
+          <span class="github-cta__arrow" aria-hidden="true">→</span>
         </a>
       </div>
 
-    </div>
+    </div><!-- /.view__inner -->
   </div><!-- /#view-skills -->
 
 
   <!-- ==================================================
-       VIEW: Vision
+       Block: view  /  Modifier: --vision（Vision）
        ================================================== -->
-  <div class="view view--detail view--ink" id="view-vision" data-view="vision" hidden aria-labelledby="vision-title">
+  <div class="view view--detail view--vision" id="view-vision" data-view="vision" hidden aria-labelledby="vision-title">
 
-    <div class="detail-wrap">
+    <div class="view__inner">
 
-      <button class="detail-back" data-target="menu" aria-label="目次へ戻る">
+      <button class="view__back" data-target="menu" aria-label="目次へ戻る">
         目次へ
       </button>
 
-      <header class="detail-header js-reveal">
-        <span class="section-index" aria-hidden="true">04</span>
-        <h2 class="section-title" id="vision-title">Vision</h2>
+      <!-- Block: section-header -->
+      <header class="section-header js-reveal">
+        <span class="section-header__index" aria-hidden="true">04</span>
+        <h2 class="section-header__title" id="vision-title">Vision</h2>
       </header>
 
-      <div class="vision-content js-reveal">
-        <blockquote class="vision-quote">
+      <!-- Block: vision -->
+      <div class="vision js-reveal">
+        <blockquote class="vision__quote">
           「 — Slow and Steady — 」
         </blockquote>
-        <p class="vision-text">
+        <p class="vision__text">
           変化の速いフロントエンド領域においても継続的に学習を積み重ねることで、技術や設計の選択肢を広げ、プロジェクトごとに適切な判断ができる状態を目指します。<br>
           効率化や改善の視点を持ち、開発プロセスや実装の両面から無駄を減らしながら、より良い状態へと更新し続けられるフロントエンドエンジニアになりたいと考えています。
         </p>
-        <p class="vision-text">
+        <p class="vision__text">
           これまでの業務では、ユーザーの要望をヒアリングする際に抽象的な内容をそのまま受け取るのではなく、目的や制約を踏まえて整理し、具体的な形に落とし込むことを意識してきました。<br>また、接客業を通じて、相手がどこで迷い、どのような情報があれば安心して行動できるかを考える視点を培ってきました。<br>これらの経験を活かし、ユーザーにとって理解しやすく、迷いなく行動できるUI設計と実装に携わっていきたいです。
         </p>
-        <p class="vision-text">
+        <p class="vision__text">
           加えて、美容皮膚科では異なる職種間で意見を取りまとめる役割も担っていたため、調整力やコミュニケーション能力を活かして、自分自身だけでなくチームメンバーのパフォーマンスも最大化できる環境づくりに寄与できる人材になりたいです。
         </p>
-      </div>
+      </div><!-- /.vision -->
 
-    </div>
+    </div><!-- /.view__inner -->
   </div><!-- /#view-vision -->
 
 </body>
