@@ -81,10 +81,11 @@ function switchView(targetName, direction) {
 
 /**
  * ルーターを初期化する
- * .tl-list が存在しない場合（index.html 等）は何もしない
+ * .tracklist__list が存在しない場合（index.html 等）は何もしない
  */
 export function initRouter() {
-  if (!document.querySelector('.tl-list')) return;
+
+  if (!document.querySelector('.tracklist__list')) return;
 
   /* 初期ビュー（menu）を出現させる */
   const menuView = document.querySelector('[data-view="menu"]');

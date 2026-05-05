@@ -3,7 +3,7 @@
  * 手紙クリックアニメーション — index.html 専用
  *
  * #letterImg をクリック／Enter・Space キーで操作すると
- * is-flying クラスを付与してアニメーション後に portfolio.html へ遷移する。
+ * letter-card--flying クラスを付与してアニメーション後に portfolio.html へ遷移する。
  */
 
 import { prefersReducedMotion } from './utils.js';
@@ -21,7 +21,6 @@ export function initLetterTop() {
     /* 二重クリック防止：リスナーを即解除 */
     letter.removeEventListener('click',   flyAndNavigate);
     letter.removeEventListener('keydown', onKeyDown);
-      window.location.href = 'portfolio.html';
 
     /* アニメーション無効環境：即遷移 */
     if (prefersReducedMotion()) {
@@ -30,7 +29,8 @@ export function initLetterTop() {
     }
 
     letter.style.willChange = 'transform, opacity';
-    letter.classList.add('is-flying');
+
+    letter.classList.add('letter-card--flying');
 
     /* CSS transition の duration（0.25s）に合わせて遷移 */
     setTimeout(() => {

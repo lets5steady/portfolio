@@ -2,7 +2,7 @@
  * js/works.js
  * Works ビュー — フィーチャー切り替えロジック
  *
- * 選択された .work-item（<li>）を #worksList から #worksFeature へ移動する。
+ * 選択された .works__item（<li>）を #worksList から #worksFeature へ移動する。
  * 前の選択アイテムは placeholder コメントノードを目印に元の位置へ戻す。
  *
  * ノードの破棄は一切行わない（innerHTML = '' を使わない）ため、
@@ -25,7 +25,7 @@ export function initWorks() {
    */
   const itemMap = new Map();
 
-  listCol.querySelectorAll('.work-item').forEach(item => {
+  listCol.querySelectorAll('.works__item').forEach(item => {
     const id = item.dataset.workId;
     if (!id) return;
     // <li> の直後にコメントノードを置き、元の位置のマーカーとして使う
@@ -44,10 +44,10 @@ export function initWorks() {
   let activeId = itemMap.keys().next().value;
   moveToFeature(activeId, null, itemMap, featureCol);
 
-  // 右列クリックを委譲（リンクのクリックは除外）
+  // リスト列クリックを委譲（リンクのクリックは除外）
   listCol.addEventListener('click', (e) => {
-    if (e.target.closest('.work-link')) return;
-    const item = e.target.closest('.work-item');
+    if (e.target.closest('.work-card__link')) return;
+    const item = e.target.closest('.works__item');
     if (!item) return;
 
     const newId = item.dataset.workId;
@@ -57,18 +57,6 @@ export function initWorks() {
     activeId = newId;
 
     moveToFeature(activeId, prevId, itemMap, featureCol);
-
-    // アニメーション無効環境はここで終了
-    if (prefersReducedMotion()) return;
-
-    // 入場アニメーション
-    const nextCard = itemMap.get(activeId)?.card;
-    if (nextCard) {
-      nextCard.classList.add('is-entering');
-      nextCard.addEventListener('animationend', () => {
-        nextCard.classList.remove('is-entering');
-      }, { once: true });
-    }
   });
 }
 
@@ -81,13 +69,11 @@ export function initWorks() {
  * activeId の <li> を #worksFeature へ移動し、
  * prevId の <li> を placeholder を目印に #worksList の元の位置へ戻す
  *
- * @param {string}               activeId
- * @param {string|null}          prevId
- * @param {Map}                  itemMap
- * @param {HTMLElement}          featureCol
+ * @param {string}      activeId
+ * @param {string|null} prevId
+ * @param {Map}         itemMap
+ * @param {HTMLElement} featureCol
  */
-
-
 function moveToFeature(activeId, prevId, itemMap, featureCol) {
   // 1. 前のアイテムを元の位置（placeholderの直前）に戻す
   if (prevId) {
