@@ -470,6 +470,11 @@ img {
      -moz-user-select: none;
           user-select: none;
 }
+@media (max-width: 480px) {
+  .letter-card__body {
+    gap: 0.3rem;
+  }
+}
 
 .letter-card__name {
   font-family: var(--font-display);
@@ -499,10 +504,15 @@ img {
     width: 240px;
   }
   .letter-card__name {
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
   .letter-card__role {
-    font-size: 0.4rem;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .letter-card__motto {
+    font-size: 0.7rem;
   }
 }
 .tracklist {
@@ -608,7 +618,7 @@ img {
 
 .tracklist__name {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: var(--fontsize-display);
   font-weight: 700;
   color: #4a3828;
   white-space: nowrap;
@@ -616,7 +626,7 @@ img {
 
 .tracklist__sub {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: var(--fontsize-label);
   color: #7a6258;
   letter-spacing: 0.05em;
   white-space: nowrap;
@@ -650,7 +660,7 @@ img {
     font-size: 1.6rem;
   }
   .tracklist__name {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
   .tracklist__sub {
     display: none;
@@ -668,7 +678,7 @@ img {
 
 .section-header__index {
   font-family: var(--font-mono);
-  font-size: var(--fontsize-label);
+  font-size: 1rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #b83020;
@@ -1061,6 +1071,11 @@ img {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(74, 56, 40, 0.45);
+}
+@media (max-width: 480px) {
+  .work-card__stack {
+    font-size: 0.65rem;
+  }
 }
 
 .work-card__title {
