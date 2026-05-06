@@ -291,9 +291,9 @@ progress {
   --clr-text-muted: rgba(74, 56, 40, 0.45);
   --clr-border: #c8dfe9;
   --clr-border-warm: #f0e8e0;
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-mono: 'DM Mono', 'Courier New', monospace;
-  --font-body: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  --font-display: 'Cormorant Garamond', 'Noto Serif JP', serif;
+  --font-mono: 'DM Mono', 'Courier New', 'Hiragino Sans', 'Noto Sans JP', monospace;
+  --font-body: 'Inter', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
   --fontsize-display: 2rem;
   --fontsize-body: 1rem;
   --fontsize-item: 0.875rem;
@@ -307,6 +307,17 @@ progress {
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --dur-base: 0.4s;
   --dur-slow: 0.7s;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #4a3828;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
 }
 
 .js-reveal {
@@ -463,29 +474,24 @@ progress {
 .letter-card__name {
   font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 700;
   color: #4a3828;
-  letter-spacing: 0.04em;
-  line-height: 1.2;
-  text-align: center;
 }
 
 .letter-card__role {
   font-family: var(--font-mono);
   font-size: 0.5rem;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  text-align: center;
   color: #6aa0b8;
 }
 
 .letter-card__motto {
   font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.65rem;
+  font-size: var(--fontsize-label);
+  font-weight: 700;
   color: rgba(184, 48, 32, 0.6);
-  letter-spacing: 0.1em;
-  text-align: center;
 }
 
 @media (max-width: 480px) {
@@ -534,7 +540,7 @@ progress {
 .tracklist__title {
   font-family: var(--font-display);
   font-size: 2rem;
-  letter-spacing: 0.02em;
+  font-weight: 700;
   color: #4a3828;
   letter-spacing: 0.04em;
 }
@@ -603,7 +609,7 @@ progress {
 .tracklist__name {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  letter-spacing: 0.02em;
+  font-weight: 700;
   color: #4a3828;
   white-space: nowrap;
 }
@@ -671,7 +677,7 @@ progress {
 .section-header__title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
-  letter-spacing: 0.02em;
+  font-weight: 700;
   color: #4a3828;
 }
 
@@ -685,7 +691,7 @@ progress {
 .about__name {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  letter-spacing: 0.02em;
+  font-weight: 700;
   color: #4a3828;
   margin-bottom: var(--space-xs);
 }
@@ -843,7 +849,7 @@ progress {
 .vision__quote {
   font-family: var(--font-display);
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  letter-spacing: 0.02em;
+  font-weight: 700;
   color: #b83020;
   font-style: italic;
   line-height: 1.6;
@@ -883,16 +889,6 @@ progress {
     grid-template-columns: 70px 1fr;
   }
 }
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: bottom;
-}
-
-div li {
-  list-style: none;
-}
-
 .view {
   position: fixed;
   inset: 0;
@@ -1010,6 +1006,11 @@ div li {
   gap: var(--space-lg);
 }
 
+.works__list,
+.works__feature {
+  list-style: none;
+}
+
 .work-card {
   background-color: #ffffff;
   border-radius: 4px;
@@ -1063,10 +1064,11 @@ div li {
 }
 
 .work-card__title {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: clamp(1.05rem, 2vw, 1.45rem);
-  letter-spacing: 0.04em;
+  font-weight: 700;
   color: #4a3828;
+  letter-spacing: 0.04em;
 }
 
 .work-card__desc {
