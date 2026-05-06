@@ -753,6 +753,68 @@ img {
   line-height: 1.6;
 }
 
+.career-timeline {
+  list-style: none;
+  position: relative;
+  padding-left: 20px;
+}
+.career-timeline::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 10px;
+  bottom: 10px;
+  width: 0;
+  border-left: 1px dashed rgba(139, 184, 204, 0.55);
+}
+
+.career-timeline__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+  font-size: var(--fontsize-item);
+}
+.career-timeline__item::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 7px;
+  height: 7px;
+  background: #fdf9f5;
+  border: 1.5px solid #8bb8cc;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+.career-timeline__item--current::before {
+  background: #b83020;
+  border-color: #b83020;
+  box-shadow: 0 0 0 3px #f5e8e6;
+}
+.career-timeline__item--current .career-timeline__role {
+  color: #b83020;
+  font-weight: 600;
+}
+
+.career-timeline__year {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(74, 56, 40, 0.45);
+  min-width: 2.8rem;
+  flex-shrink: 0;
+  font-style: italic;
+}
+
+.career-timeline__role {
+  color: #4a3828;
+  line-height: 1.4;
+}
+
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
