@@ -722,6 +722,41 @@ img {
   margin-bottom: var(--space-sm);
 }
 
+.about__inline-img {
+  margin: var(--space-md) 0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.about__inline-img-el {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  transition: transform 0.5s var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .about__inline-img:hover .about__inline-img-el {
+    transform: scale(1.03);
+  }
+}
+
+.about__inline-img-caption {
+  font-family: var(--font-mono);
+  font-size: var(--fontsize-label);
+  letter-spacing: 0.08em;
+  color: rgba(74, 56, 40, 0.45);
+  margin-top: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.js-about-img.js-reveal {
+  transform: translateY(16px) scale(0.98);
+}
+.js-about-img.js-reveal.is-visible {
+  transform: translateY(0) scale(1);
+}
+
 .meta-list {
   display: flex;
   flex-direction: column;
