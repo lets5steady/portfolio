@@ -706,32 +706,39 @@ img {
   align-items: start;
 }
 
+.about__inner {
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  gap: var(--space-md);
+}
+
 .about__name {
+  padding-inline: var(--space-sm);
+  padding-block: var(--space-xs);
+  background-color: #c8dfe9;
+  align-items: center;
   font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 700;
   color: #4a3828;
-  margin-bottom: var(--space-xs);
 }
 
-.about__role {
-  font-family: var(--font-mono);
-  font-size: var(--fontsize-label);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #b83020;
-  margin-bottom: var(--space-md);
+.about__bio {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 0 #c8dfe9, 0 8px 32px rgba(139, 184, 204, 0.14);
+  overflow: hidden;
 }
 
 .about__text {
   font-size: var(--fontsize-body);
-  line-height: 1.9;
+  line-height: 1.8;
   color: #7a6258;
-  margin-bottom: var(--space-sm);
 }
 
 .about__inline-img {
-  margin: var(--space-md) 0;
   border-radius: 4px;
   overflow: hidden;
   position: relative;
@@ -789,11 +796,12 @@ img {
   text-transform: uppercase;
   color: rgba(74, 56, 40, 0.45);
   padding-top: 0.1em;
+  align-self: center;
 }
 
 .meta-list__value {
   color: #4a3828;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 .career-timeline {
@@ -978,7 +986,6 @@ img {
   font-weight: 700;
   color: #b83020;
   font-style: italic;
-  line-height: 1.6;
   margin-bottom: var(--space-lg);
   border-left: 2px solid #e8c5c0;
   background: #f5e8e6;
@@ -988,7 +995,7 @@ img {
 
 .vision__text {
   font-size: var(--fontsize-body);
-  line-height: 2;
+  line-height: 1.8;
   color: #7a6258;
   margin-bottom: var(--space-md);
 }
@@ -1236,7 +1243,7 @@ img {
 
 .work-card__desc {
   font-size: var(--fontsize-body);
-  line-height: 1.85;
+  line-height: 1.8;
   color: #7a6258;
 }
 
