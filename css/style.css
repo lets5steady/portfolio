@@ -823,12 +823,15 @@ img {
 }
 
 .skill-card {
-  border-left: 1px solid #c8dfe9;
-  padding-left: var(--space-xs);
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 0 #c8dfe9, 0 8px 32px rgba(139, 184, 204, 0.14);
+  overflow: hidden;
 }
 
 .skill-card__header {
-  padding: 0.5rem;
+  padding-block: var(--space-xs);
+  padding-inline: var(--space-sm);
   display: flex;
   align-items: center;
   gap: var(--space-xs);
@@ -867,6 +870,8 @@ img {
 .skill-card__note {
   font-size: var(--fontsize-item);
   color: #7a6258;
+  padding: var(--space-xs) var(--space-sm) var(--space-sm);
+  line-height: 1.8;
 }
 
 .skill-card--learning {
