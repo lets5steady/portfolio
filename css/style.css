@@ -388,6 +388,14 @@ img {
     opacity: 0.55;
   }
 }
+@keyframes diamondPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 3px #f5e8e6;
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(184, 48, 32, 0.15);
+  }
+}
 .page--top {
   min-height: 100dvh;
   display: grid;
@@ -828,6 +836,7 @@ img {
   background: #b83020;
   border-color: #b83020;
   box-shadow: 0 0 0 3px #f5e8e6;
+  animation: diamondPulse 2.4s ease-in-out infinite;
 }
 .career-timeline__item--current .career-timeline__role {
   color: #b83020;
