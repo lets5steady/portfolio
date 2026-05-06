@@ -822,6 +822,11 @@ img {
   margin-bottom: var(--space-xl);
 }
 
+.skill-card {
+  border-left: 1px solid #c8dfe9;
+  padding-left: var(--space-xs);
+}
+
 .skill-card__header {
   padding: 0.5rem;
   display: flex;
@@ -1123,6 +1128,26 @@ img {
   display: flex;
   flex-direction: column;
   background-color: #e8f3f8;
+  overflow: hidden;
+}
+
+.works__feature .work-card > a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.works__feature .work-card > a .work-card__images {
+  overflow: hidden;
+}
+.works__feature .work-card > a img {
+  display: block;
+  width: 100%;
+  transition: transform 0.5s var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .works__feature .work-card > a:hover img {
+    transform: scale(1.05);
+  }
 }
 
 .work-card__body {
