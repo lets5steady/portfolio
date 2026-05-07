@@ -457,11 +457,18 @@
         <!-- Element: study-log（スクリーンショット） -->
         <div class="vision__study-log">
           <p class="vision__log-label">継続的な自主学習・制作時間の記録</p>
+          <button
+            class="vision__log-trigger"
+            id="logTrigger"
+            aria-haspopup="dialog"
+            aria-label="自主学習についての詳細を見る"
+          >
             <img
               class="vision__log-img"
               src="images/studylog.jpg"
               alt="勉強時間を記録したアプリのスクリーンショット"
             >
+          </button>
           <p class="vision__log-caption">
             引用：<cite><a class="vision__log-cite-link" href="https://bondavi.jp/shuchu/" target="_blank" rel="noopener noreferrer">勉強・仕事がはかどるアプリ「集中」#bondavi</a></cite>
           </p>
@@ -474,9 +481,44 @@
           加えて、美容皮膚科では異なる職種間で意見を取りまとめる役割も担っていたため、調整力やコミュニケーション能力を活かして、自分自身だけでなくチームメンバーのパフォーマンスも最大化できる環境づくりに寄与できる人材になりたいです。
         </p>
       </div><!-- /.vision -->
-
     </div><!-- /.view__inner -->
   </div><!-- /#view-vision -->
+
+
+  <!-- ================================================
+       Block: log-modal（勉強記録モーダル）
+       ================================================ -->
+  <dialog
+    class="log-modal"
+    id="logModal"
+    aria-labelledby="logModalTitle"
+  >
+    <div class="log-modal__panel">
+
+      <button class="log-modal__close" id="logModalClose" aria-label="閉じる">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true">
+          <line x1="3" y1="3" x2="17" y2="17"/>
+          <line x1="17" y1="3" x2="3" y2="17"/>
+        </svg>
+      </button>
+
+      <h3 class="log-modal__title" id="logModalTitle">自主学習・制作への取り組み方について</h3>
+
+      <div class="log-modal__body">
+        <p class="log-modal__text">
+          職業訓練開始時に、授業時間外で自己研鑽のための時間を<b>「500時間」</b>確保することを目標として定め、学習記録アプリを用いて、自主学習・制作を記録・管理しています。
+        </p>
+        <p class="log-modal__text">
+          学習初期は、まず知識と経験の両方を積み重ねることを重視し、実装・制作に加えて、解説記事や動画による情報収集、技術調査、検証などにも継続的に取り組んできました。<br>
+          その過程で、基礎的な技術力だけでなく、自ら課題を整理し、調査・検証を行いながら改善を進める力を身につけることができたと感じています。
+        </p>
+        <p class="log-modal__text">
+          最近ではEVM的な考え方にも関心を持ち、単純な学習時間だけでなく、<b>「どのような成果や成長につながったか」</b>を意識しながら、より生産性の高い学習・制作が出来るよう心がけています。
+        </p>
+      </div>
+
+    </div><!-- /.log-modal__panel -->
+  </dialog>
 
 </body>
 </html>

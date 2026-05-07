@@ -8,7 +8,8 @@
 
 import { initLetterTop } from './letter.js';
 import { initRouter }    from './router.js';
-import { initWorks } from './works.js';
+import { initWorks }     from './works.js';
+import { initLogModal }  from './logModal.js';
 
 /* index.html：手紙クリックアニメーション */
 initLetterTop();
@@ -18,3 +19,6 @@ initRouter();
 
 /* portfolio.html：<template id="works-data">  */
 initWorks();
+
+/* portfolio.html：勉強記録モーダル */
+initLogModal();
