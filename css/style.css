@@ -987,6 +987,9 @@ img {
 
 .vision {
   max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
 .vision__quote {
@@ -995,7 +998,6 @@ img {
   font-weight: 700;
   color: #b83020;
   font-style: italic;
-  margin-bottom: var(--space-lg);
   border-left: 2px solid #e8c5c0;
   background: #f5e8e6;
   padding: var(--space-sm) var(--space-md);
@@ -1006,10 +1008,48 @@ img {
   font-size: var(--fontsize-body);
   line-height: 1.8;
   color: #7a6258;
-  margin-bottom: var(--space-md);
 }
-.vision__text:last-child {
-  margin-bottom: 0;
+
+.vision__study-log {
+  width: 90%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.vision__log-label {
+  font-family: var(--font-mono);
+  font-size: var(--fontsize-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(74, 56, 40, 0.45);
+}
+
+.vision__log-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.vision__log-caption {
+  font-family: var(--font-mono);
+  font-size: var(--fontsize-label);
+  letter-spacing: 0.08em;
+  color: rgba(74, 56, 40, 0.45);
+}
+
+.vision__log-cite-link {
+  color: #6aa0b8;
+  text-decoration: underline;
+  text-decoration-color: #c8dfe9;
+  text-underline-offset: 2px;
+  transition: color var(--dur-base) ease;
+}
+.vision__log-cite-link:hover {
+  color: #b83020;
 }
 
 @media (max-width: 768px) {
