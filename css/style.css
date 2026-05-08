@@ -1179,6 +1179,9 @@ img {
     max-height: 85dvh;
     padding: var(--space-sm);
   }
+  .meta-list__label.work-location {
+    font-size: 0.7rem;
+  }
 }
 .view {
   position: fixed;
