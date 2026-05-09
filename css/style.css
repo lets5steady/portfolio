@@ -1222,6 +1222,9 @@ img {
     max-height: 85dvh;
     padding: var(--space-sm);
   }
+  .log-modal__text {
+    font-size: var(--fontsize-item);
+  }
   .meta-list__label.work-location {
     font-size: 0.7rem;
   }
