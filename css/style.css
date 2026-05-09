@@ -403,7 +403,7 @@ img {
   }
   50% {
     opacity: 1;
-    transform: scaleX(1.02) scaleY(1.06);
+    transform: scaleX(1.02) scaleY(1.02);
   }
   65%, 100% {
     opacity: 0.5;
@@ -585,25 +585,22 @@ img {
 
 .tracklist__item {
   border-bottom: 1px solid rgba(139, 184, 204, 0.18);
-  animation: tlItemIn 0.6s var(--ease-out) calc(0.35s + var(--i, 0) * 0.09s) both;
+  transform-origin: left center;
 }
 .tracklist__item:first-child {
   border-top: 1px solid rgba(139, 184, 204, 0.18);
 }
-.tracklist__item {
-  transform-origin: left center;
-}
 .tracklist__item:nth-child(1) {
-  animation: rowWave 6s ease-in-out 0s infinite;
+  animation: tlItemIn 1.2s var(--ease-out) 0.5s both, rowWave 6s ease-in-out 2.3s infinite;
 }
 .tracklist__item:nth-child(2) {
-  animation: rowWave 6s ease-in-out 1.5s infinite;
+  animation: tlItemIn 1.2s var(--ease-out) 0.65s both, rowWave 6s ease-in-out 3.8s infinite;
 }
 .tracklist__item:nth-child(3) {
-  animation: rowWave 6s ease-in-out 3s infinite;
+  animation: tlItemIn 1.2s var(--ease-out) 0.8s both, rowWave 6s ease-in-out 5.3s infinite;
 }
 .tracklist__item:nth-child(4) {
-  animation: rowWave 6s ease-in-out 4.5s infinite;
+  animation: tlItemIn 1.2s var(--ease-out) 0.95s both, rowWave 6s ease-in-out 6.8s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -637,6 +634,18 @@ img {
 .tracklist__link:hover .tracklist__arrow {
   transform: translateX(4px);
   color: #6aa0b8;
+}
+
+.tracklist__list:has(.tracklist__link:hover) .tracklist__item {
+  animation: none;
+  opacity: 0.5;
+  transform: scaleX(1) scaleY(1);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tracklist__list:has(.tracklist__link:hover) .tracklist__item:has(.tracklist__link:hover) {
+  opacity: 1;
+  transform: scaleX(1.02) scaleY(1.02);
 }
 
 .tracklist__num {
