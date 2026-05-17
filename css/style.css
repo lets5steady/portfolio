@@ -446,6 +446,9 @@ img {
 }
 
 .letter-card {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   position: relative;
   width: 300px;
   cursor: pointer;
