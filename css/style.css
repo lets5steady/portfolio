@@ -848,6 +848,7 @@ dialog.lightbox.is-open::backdrop {
   box-shadow: 0 4px 24px rgba(139, 184, 204, 0.36), 0 2px 8px rgba(184, 48, 32, 0.12);
   position: relative;
   cursor: default;
+  padding-top: 2rem;
 }
 
 .lightbox__img {
