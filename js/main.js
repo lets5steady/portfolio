@@ -10,6 +10,7 @@ import { initLetterTop } from './letter.js';
 import { initRouter }    from './router.js';
 import { initWorks }     from './works.js';
 import { initLogModal }  from './logModal.js';
+import { initLightbox } from './lightbox.js';
 
 /* index.html：手紙クリックアニメーション */
 initLetterTop();
@@ -22,3 +23,6 @@ initWorks();
 
 /* portfolio.html：勉強記録モーダル */
 initLogModal();
+
+/* portfolio.html：ライトボックス（モーダル画像拡大） */
+initLightbox();

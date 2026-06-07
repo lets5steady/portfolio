@@ -125,8 +125,11 @@
               興味を持った分野について継続的に学び、知識を積み上げていくことにやりがいを感じます。具体例としては、学生時代に専攻していた韓国語の学習を卒業後も7年間継続しており、韓国語能力試験の最高級である6級を二度取得しました。
             </p>
             <figure class="about__inline-img js-about-img js-reveal">
-              <img class="about__inline-img-el" src="images/topik-score.png" alt="韓国語能力試験の成績表" loading="lazy"
-                aria-hidden="true">
+              <button class="about__inline-img-trigger js-lightbox-trigger" aria-label="画像を拡大して見る"
+                data-lightbox-src="images/topik-score.png"
+                data-lightbox-caption="2025年に受けた韓国語能力試験では、自己最高得点を取得することができました。">
+                <img class="about__inline-img-el" src="images/topik-score.png" alt="韓国語能力試験の成績表">
+              </button>
               <figcaption class="about__inline-img-caption">
                 2025年に受けた韓国語能力試験では、自己最高得点を取得することができました。
               </figcaption>
@@ -375,7 +378,7 @@
           </p>
         </div>
 
-        <div class="skill-card  js-reveal">
+        <div class="skill-card js-reveal">
           <div class="skill-card__header">
             <span class="skill-card__name">React</span>
             <div class="skill-card__icon" aria-hidden="true">
@@ -505,6 +508,16 @@
     </div><!-- /.view__inner -->
   </div><!-- /#view-vision -->
 
+  <!-- ==================================================
+       Block: lightbox（モーダル画像拡大）
+       ================================================== -->
+  <dialog class="lightbox" id="lightboxDialog" aria-label="画像拡大表示" aria-modal="true">
+    <div class="lightbox__inner">
+      <button class="lightbox__close" aria-label="閉じる">&#x2715;</button>
+      <img class="lightbox__img" src="#" alt="">
+      <p class="lightbox__caption"></p>
+    </div>
+  </dialog>
 
   <!-- ================================================
        Block: log-modal（勉強記録モーダル）
