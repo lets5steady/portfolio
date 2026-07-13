@@ -225,19 +225,19 @@
               <div class="work-card__body">
                 <div class="work-card__meta">
                   <span class="work-card__type">Web</span>
-                  <span class="work-card__stack">React / TypeScript / CSS Modules / Next.js</span>
+                  <span class="work-card__stack">Next.js / React / TypeScript / CSS Modules</span>
                 </div>
                 <h3 class="work-card__title" id="work1-title">架空のクッキー専門店のwebサイト</h3>
                 <p class="work-card__desc">
-                  授業で最初に制作したWebサイトです。<br>
-                  HTML/CSS/JavaScriptで実装したのち、Reactへの理解を深めるため、自主的にサイト全体を再構築しました。
+                  学習初期にHTML/CSS/JavaScriptで制作したサイトを、Next.js/TypeScriptを用いて再構築しました。<br>
+                  コンポーネント設計や動的ルーティングを取り入れ、拡張しやすい構成へ改善しています。
                 </p>
                 <p class="work-card__desc">
-                  現在はトップページのみの構成ですが、今後の商品詳細ページなどの実装を見据え、動的ルーティングやコンポーネント設計を学習できるNext.jsを採用しています。<br>
+                  microCMSを導入し、ニュース記事や商品情報を管理できるよう改善しました。<br>
+                  あわせて検索機能やスライダー、複数の下層ページを実装し、より実用的なWebサイトへ発展させています。
+                </p>
+                <p class="work-card__desc">
                   実務に近い開発フローを学ぶため、GitHubとVercelを連携し、ブランチ運用・Pull Request・自動デプロイを取り入れました。
-                </p>
-                <p class="work-card__desc">
-                  デザイン面では、高級感のある余白を保つため、商品紹介のレイアウトをデスクトップ版では3列、スマホ版では2列に収めるようグリッドレイアウトで制御しています。
                 </p>
                 <a class="work-card__link"
                   href="https://butter-collection-site.vercel.app/" target="_blank"
@@ -262,13 +262,50 @@
 
               <div class="work-card__body">
                 <div class="work-card__meta">
+                  <span class="work-card__type">Web</span>
+                  <span class="work-card__stack">HTML / CSS / JavaScript</span>
+                </div>
+                <h3 class="work-card__title" id="work2-title">架空の高級美顔器のLP</h3>
+                <p class="work-card__desc">
+                  二度目に授業で作成したサイトです。<br>
+                  Figmaでバリアブルやコンポーネントを活用し、ペルソナやカスタマージャーニーマップをもとに、購入までの情報設計を意識して制作しました。
+                </p>
+                <p class="work-card__desc">
+                  信頼性を高める情報を段階的に提示しながら、詳細はモーダルで表示し、ユーザーが必要な情報を選択して閲覧できるよう工夫しました。<br>
+                  また、複数ページ構成のためSCSSのmixinを活用し、可読性を意識して実装しました。
+                </p>
+                <a class="work-card__link" href="https://lets5steady.github.io/dermavance.lp/" target="_blank"
+                  rel="noopener noreferrer">
+                  - 50万円の美顔器の性能とは -
+                </a>
+              </div>
+
+              <a href="https://lets5steady.github.io/dermavance.lp/" target="_blank" rel="noopener noreferrer"
+                aria-label="美顔器LPを詳しく見る">
+                <div class="work-card__images" aria-hidden="true">
+                  <img src="images/dermavance-firstview.jpg" alt="">
+                  <img src="images/dermavance-design.jpg" alt="">
+                </div>
+              </a>
+
+            </article>
+          </li>
+
+          <!-- ── 制作物 3 ── -->
+          <li class="works__item" data-work-id="3">
+            <article class="work-card" aria-labelledby="work3-title">
+
+              <div class="work-card__body">
+                <div class="work-card__meta">
                   <span class="work-card__type">App</span>
                   <span class="work-card__stack">HTML / CSS / JavaScript</span>
                 </div>
-                <h3 class="work-card__title" id="work2-title">ハングル学習アプリ</h3>
+                <h3 class="work-card__title" id="work3-title">ハングル学習アプリ</h3>
                 <p class="work-card__desc">
                   自主的に制作した韓国語学習のためのクイズアプリです。<br>
-                  特技である韓国語を活かしたいと考え、「韓国語に初めて触れる方がハングルを読めるようになること」を目標に開発しました。<br>
+                  特技である韓国語を活かしたいと考え、「韓国語に初めて触れる方がハングルを読めるようになること」を目標に開発しました。
+                </p>
+                <p class="work-card__desc">
                   コードはすべて生成AIを用いて実装しています。<br>
                   AIを活用しながらも一貫した設計思想を持ち、少しずつ修正を重ね、機能を追加していきました。<br>
                   LocalStorageを活用し、ブラウザを閉じてもデータが残る仕様です。
@@ -283,38 +320,6 @@
                 aria-label="ハングル学習アプリを詳しく見る">
                 <div class="work-card__images" aria-hidden="true">
                   <img src="images/hangeulQuiz.jpg" alt="">
-                </div>
-              </a>
-
-            </article>
-          </li>
-
-          <!-- ── 制作物 3 ── -->
-          <li class="works__item" data-work-id="3">
-            <article class="work-card" aria-labelledby="work3-title">
-
-              <div class="work-card__body">
-                <div class="work-card__meta">
-                  <span class="work-card__type">Web</span>
-                  <span class="work-card__stack">HTML / CSS / JavaScript</span>
-                </div>
-                <h3 class="work-card__title" id="work3-title">架空の高級美顔器のLP</h3>
-                <p class="work-card__desc">
-                  二度目に授業で作成したサイトです。<br>
-                  前回とは異なり、Figmaでバリアブルやコンポーネントも活用しながら、ペルソナやカスタマージャーニーマップから作成しました。<br>
-                  サイトの構成上、複数のHTMLが必要であったため、SCSSのmixin機能を有効活用し簡潔でわかりやすいコードを目指しました。
-                </p>
-                <a class="work-card__link" href="https://lets5steady.github.io/dermavance.lp/" target="_blank"
-                  rel="noopener noreferrer">
-                  - 50万円の美顔器の性能とは -
-                </a>
-              </div>
-
-              <a href="https://lets5steady.github.io/dermavance.lp/" target="_blank" rel="noopener noreferrer"
-                aria-label="美顔器LPを詳しく見る">
-                <div class="work-card__images" aria-hidden="true">
-                  <img src="images/dermavance-firstview.jpg" alt="">
-                  <img src="images/dermavance-design.jpg" alt="">
                 </div>
               </a>
 
